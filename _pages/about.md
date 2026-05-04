@@ -1,8 +1,8 @@
 ---
 permalink: /
 title: "About us"
-excerpt: "About us"
-author_profile: true
+excerpt: "Robotics for Assistive Systems and Rehabilitation (RASR) Lab"
+author_profile: false
 redirect_from: 
   - /about/
   - /about.html
