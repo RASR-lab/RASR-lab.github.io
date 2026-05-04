@@ -264,3 +264,6 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
     renderCards(btn.dataset.filter);
   });
 });
+
+renderCards();
+</script>
