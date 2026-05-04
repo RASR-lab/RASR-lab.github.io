@@ -12,13 +12,13 @@
 #minimal_mistakes_skin : "dark" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 locale                   : "en-US"
-title                    : "Sandesh G. Bhat"
+title                    : "RASR Lab"
 title_separator          : "-"
-name                     : &name "Sandesh G. Bhat"
+name                     : &name "RASR Lab"
 description              : &description "Assistant Professor, UWEC"
-url                      : https://DrSGBhat.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url                      : https://RASR-lab.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
-repository               : "DrSGBhat/DrSGBhat.github.io"
+repository               : "RASR-lab/RASR-lab.github.io"
 teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
 breadcrumbs              : false # true, false (default)
 words_per_minute         : 160
@@ -83,15 +83,14 @@ analytics:
 # Site Author
 author:
   name             : "Sandesh G. Bhat"
-  avatar           : "sandesh.jpg"
-  bio              : "Assistant Professor ,<br>
-                      Assistive Systems & Robotics Engineering,<br>
+  avatar           : "RASR_Lab_logo.png"
+  bio              : "Robotics for Assistive Systems and Rehabilitation Lab,<br>
                       Physics & Astronomy Department,<br>
-                      University of Wisconsin"
+                      University of Wisconsin - Eau Claire"
   location         : "Eau Claire, WI, USA"
   employer         : 
-  googlescholar    : "https://scholar.google.com/citations?hl=en&user=Dx9aVjgAAAAJ"
-  email            : "mrsandeshbhat@gmail.com"
+  googlescholar    : 
+  email            : "bhatsg@uwec.edu"
   uri              : 
   bitbucket        :
   codepen          :
@@ -99,13 +98,13 @@ author:
   flickr           :
   facebook         : 
   foursquare       :
-  github           : "mrsandeshbhat"
+  github           : 
   google_plus      :
   keybase          :
   instagram        : 
   lastfm           :
-  linkedin         : "mrsandeshbhat"
-  orcid            : "https://orcid.org/0000-0002-8989-0235"
+  linkedin         : 
+  orcid            : 
   pinterest        :
   soundcloud       :
   stackoverflow    : # http://stackoverflow.com/users/123456/username

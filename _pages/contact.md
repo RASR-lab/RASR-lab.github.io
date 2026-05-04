@@ -7,9 +7,19 @@ author_profile: true
 
 {% include base_path %}
 
+Location:
+
+Phillips Science Hall
+
+University of Wisconsin - Eau Claire
+
 Eau Claire, WI, U.S.A.<br>
 
-Email: mrsandeshbhat [at] gmail [dot] com
+
+
+Please contact Dr. Sandesh G. Bhat for further questions 
+
+Email: bhatsg [at] uwec [dot] edu
 
 LinkedIn: [<font color="#52ADC8">DrSGBhat</font>](https://in.linkedin.com/in/mrsandeshbhat)
 

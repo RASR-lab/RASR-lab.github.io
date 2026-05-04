@@ -1,7 +1,7 @@
 # main links links
 main:
-  - title: "CV"
-    url: /cv/
+  - title: "The Team"
+    url: /team/
 
   - title: "Publications"
     url: /publications/
@@ -15,17 +15,11 @@ main:
   #- title: "Photography"
   #  url: /Photography/    
     
-  - title: "Teaching"
+  - title: "Education"
     url: /teaching/   
         
-  - title: "Service"
-    url: /service/
-    
   # - title: "My Travel"
   #   url: /mytravel/
-
-  - title: "RASR Lab"
-    url: /RASR/
 
   - title: "Contact"
     url: /contact/  
