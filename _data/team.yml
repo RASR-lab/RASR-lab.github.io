@@ -1,4 +1,6 @@
-- name: Alice
-  role: Engineer
-- name: Charlie
-  role: Designer
+- name: Sandesh G. Bhat, Ph.D.
+  role: Faculty
+  picture: images/sandesh.jpg
+- name: Nora McGowan
+  role: Research Assistant
+  picture: images/profile.png

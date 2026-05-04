@@ -9,7 +9,8 @@ redirect_from:
 ---
 
 <br>
-Robotics for Assistive Systems and Rehabilitation (RASR) Lab
+
+# Robotics for Assistive Systems and Rehabilitation (RASR) Lab
 
 <img align="middle" src="https://RASR-lab.github.io/images/RASR_Lab_logo.png" alt="RASR lab logo" style="width: 700px; border-radius: 10px; padding: 8px 8px 8px 8px"/>
 
