@@ -8,7 +8,7 @@ redirect_from:
   - /about.html
 ---
 
-<img align="middle" src="https://DrSGBhat.github.io/files/RASR_Lab_logo.png" alt="RASR lab logo" style="width: 700px; border-radius: 10px; padding: 8px 8px 8px 8px"/>
+<img align="middle" src="https://RASR-lab.github.io/files/RASR_Lab_logo.png" alt="RASR lab logo" style="width: 700px; border-radius: 10px; padding: 8px 8px 8px 8px"/>
 
 Greetings from the Robotics for Assistive Systems and Rehabilitation (RASR) Lab! We are a research lab within the College of Arts and Sciences at the University of Wisconsin-Eau Claire. We started our research journey in the Spring of 2026.
 
@@ -16,7 +16,6 @@ The RASR lab is dedicated to undergraduate research in the field of upper extrem
 
 Feel free to explore our work and collaborations...
 
-<!-- <img align="middle" src="https://DrSGBhat.github.io/files/sandesh.jpg?raw=true" alt="Photo" style="width: 700px; border-radius: 10px; padding: 8px 8px 8px 8px"/>  -->
 
 
 

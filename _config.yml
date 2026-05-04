@@ -82,10 +82,11 @@ analytics:
 
 # Site Author
 author:
-  name             : "Sandesh G. Bhat"
+  name             : "RASR Lab"
   avatar           : "RASR_Lab_logo.png"
-  bio              : "Robotics for Assistive Systems and Rehabilitation Lab,<br>
-                      Physics & Astronomy Department,<br>
+  bio              : "Robotics for Assistive Systems and Rehabilitation Lab<br>
+                      <br>
+                      Physics & Astronomy Department<br>
                       University of Wisconsin - Eau Claire"
   location         : "Eau Claire, WI, USA"
   employer         : 
@@ -311,4 +312,4 @@ compress_html:
   ignore:
     envs: development
 
-#theme: jekyll-theme-merlot
+theme: jekyll-theme-merlot
