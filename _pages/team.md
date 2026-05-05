@@ -11,13 +11,13 @@ Meet the researchers, engineers, and students driving innovation in assistive ro
 
 ### Faculty
 
-  {% assign faculty = site.data.team | where: "role", "Faculty" %}
-  {% for member in faculty %}
-    <div class="team-member">
-      <img src="{{ site.baseurl }}/images/{{ member.image }}" alt="{{ member.name }}">
-      <h3>{{ member.name }}</h3>
-    </div>
-  {% endfor %}
+{% assign faculty = site.data.team | where: "role", "Faculty" %}
+{% for member in faculty %}
+  <div class="team-member">
+    <img src="{{ site.baseurl }}/images/{{ member.image }}" alt="{{ member.name }}">
+    <h3>{{ member.name }}</h3>
+  </div>
+{% endfor %}
 
 # Join the Lab!
 
