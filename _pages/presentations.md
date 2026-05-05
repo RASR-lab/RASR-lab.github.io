@@ -10,6 +10,19 @@ updated: 5/4/2026
 # Intramural
 
 ## Poster
+<ol>
+{% assign intra.poster = site.data.presentations | where: "type", "Intramural Poster" %}
+{% for member in intra.poster %}
+  <div class="Presentations">
+    <li><h3>{{ member.title }}</h3></li>
+    	<p>{{ member.date}}</p>
+    	<p>Presenter: {{ member.presenter}}</p>
+    	<p>Conference: {{ member.conference}}</p>
+    	<p>{{ member.location}}</p>
+  </div>
+{% endfor %}
+</ol>
+
 
 1. <b>Effects of Aging and Disc Degeneration on the human ankle and knees during walking</b><br>
 	April, 2026 <br>
