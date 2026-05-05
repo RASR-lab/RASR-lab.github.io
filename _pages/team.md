@@ -16,6 +16,7 @@ Meet the researchers, engineers, and students driving innovation in assistive ro
   <div class="team-member">
     <img src="{{ site.baseurl }}/images/{{ member.image }}" alt="{{ member.name }}" style="width: 300px">
     <h3>{{ member.name }}</h3>
+    <p>{{ member.position}}</p>
   </div>
 {% endfor %}
 <br>
@@ -27,11 +28,13 @@ Meet the researchers, engineers, and students driving innovation in assistive ro
   <div class="team-member">
     <img src="{{ site.baseurl }}/images/{{ member.image }}" alt="{{ member.name }}" style="width: 300px">
     <h3>{{ member.name }}</h3>
+    <p>{{ member.position}}</p>
   </div>
 {% endfor %}
 
 <br>
 <br>
+
 # Join the Lab!
 
   Interested in biomechanics, robotics, or rehabilitation engineering? The RASR Lab welcomes motivated undergraduate and graduate students. Reach out to

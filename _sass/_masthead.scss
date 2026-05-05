@@ -5,6 +5,7 @@
 .masthead {
   position: relative;
   border-bottom: 1px solid $border-color;
+  background: $uwec-blue;
   -webkit-animation: intro 0.3s both;
           animation: intro 0.3s both;
   -webkit-animation-delay: 0.15s;
@@ -32,7 +33,7 @@
 }
 
 .masthead__menu {
-
+  background: $uwec-blue;display: block;
   ul {
     margin: 0;
     padding: 0;
@@ -42,6 +43,7 @@
 }
 
 .masthead__menu-item {
+  background: $uwec-blue;display: block;
   display: block;
   list-style-type: none;
   white-space: nowrap;
