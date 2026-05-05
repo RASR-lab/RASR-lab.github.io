@@ -10,11 +10,15 @@ redirect_from:
 Meet the researchers, engineers, and students driving innovation in assistive robotics and rehabilitation technology at the University of Wisconsin–Eau Claire.
 
 ### Faculty
-{% assign faculty = site.data.team | where: "role", "Faculty" %}
-{% for person in faculty %}
-  - {{ person.picture }}
-  - {{ person.name }}
-{% endfor %}
+<div class="team-list">
+  {% assign faculty = site.data.team | where: "role", "Faculty" %}
+  {% for member in faculty %}
+    <div class="team-member">
+      <img src="{{ site.baseurl }}/images/{{ member.image }}" alt="{{ member.name }}">
+      <h3>{{ member.name }}</h3>
+    </div>
+  {% endfor %}
+</div>
 
 # Join the Lab!
 
