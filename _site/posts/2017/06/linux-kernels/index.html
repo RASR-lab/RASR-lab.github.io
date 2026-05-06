@@ -1,0 +1,2101 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+<meta charset="utf-8">
+
+
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Notes for Linux Kernel - RASR Lab</title>
+
+
+
+
+
+
+
+<meta property="og:locale" content="en-US">
+<meta property="og:site_name" content="RASR Lab">
+<meta property="og:title" content="Notes for Linux Kernel">
+
+
+  <link rel="canonical" href="http://localhost:4000/posts/2017/06/linux-kernels/">
+  <meta property="og:url" content="http://localhost:4000/posts/2017/06/linux-kernels/">
+
+
+
+  <meta property="og:description" content="IntroductionFeatures  Preemptive multitasking  Virtual memory  Shared libraries  Demand loading, dynamic kernel modules  TCP/IP networking  Symmetrical Multi-Processing support  Open source">
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2017-06-22T00:00:00-07:00">
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "RASR Lab",
+      "url" : "http://localhost:4000",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="RASR Lab Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+    
+
+<!-- start custom head snippets -->
+
+<link rel="stylesheet" href="http://localhost:4000/assets/css/academicons.min.css"/>
+<link rel="apple-touch-icon" sizes="57x57" href="http://localhost:4000/images/apple-touch-icon-57x57.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="60x60" href="http://localhost:4000/images/apple-touch-icon-60x60.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="76x76" href="http://localhost:4000/images/apple-touch-icon-76x76.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="120x120" href="http://localhost:4000/images/apple-touch-icon-120x120.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="152x152" href="http://localhost:4000/images/apple-touch-icon-152x152.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="180x180" href="http://localhost:4000/images/apple-touch-icon-180x180.png?v=M44lzPylqQ">
+<link rel="icon" type="image/png" href="http://localhost:4000/images/favicon-32x32.png?v=M44lzPylqQ" sizes="32x32">
+<link rel="icon" type="image/png" href="http://localhost:4000/images/android-chrome-192x192.png?v=M44lzPylqQ" sizes="192x192">
+<link rel="icon" type="image/png" href="http://localhost:4000/images/favicon-96x96.png?v=M44lzPylqQ" sizes="96x96">
+<link rel="icon" type="image/png" href="http://localhost:4000/images/favicon-16x16.png?v=M44lzPylqQ" sizes="16x16">
+<link rel="manifest" href="http://localhost:4000/images/manifest.json?v=M44lzPylqQ">
+<link rel="mask-icon" href="http://localhost:4000/images/safari-pinned-tab.svg?v=M44lzPylqQ" color="#000000">
+<link rel="shortcut icon" href="/images/favicon.ico?v=M44lzPylqQ">
+<meta name="msapplication-TileColor" content="#000000">
+<meta name="msapplication-TileImage" content="http://localhost:4000/images/mstile-144x144.png?v=M44lzPylqQ">
+<meta name="msapplication-config" content="http://localhost:4000/images/browserconfig.xml?v=M44lzPylqQ">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000/">RASR Lab</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/team/">The Team</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/publications/">Publications</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/presentations/">Presentations</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/teaching/">Education</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/contact/">Contact</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+
+
+
+<div id="main" role="main">
+  
+
+
+  <div class="sidebar sticky">
+  
+
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  <div class="author__avatar">
+    
+    	<img src="http://localhost:4000/images/RASR_Lab_logo.png" class="author__avatar" alt="RASR Lab">
+    
+  </div>
+
+  <div class="author__content">
+    <h3 class="author__name">RASR Lab</h3>
+    <p class="author__bio">Robotics for Assistive Systems and Rehabilitation Lab<br> <br> Physics & Astronomy Department,<br> University of Wisconsin - Eau Claire</p>
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li><i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> Eau Claire, WI, USA</li>
+      
+      
+      
+      
+        <li><a href="mailto:bhatsg@uwec.edu"><i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Notes for Linux Kernel">
+    <meta itemprop="description" content="IntroductionFeatures  Preemptive multitasking  Virtual memory  Shared libraries  Demand loading, dynamic kernel modules  TCP/IP networking  Symmetrical Multi-Processing support  Open source">
+    <meta itemprop="datePublished" content="June 22, 2017">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Notes for Linux Kernel
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  39 minute read
+	
+</p>
+          
+        
+        
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2017-06-22T00:00:00-07:00">June 22, 2017</time></p>
+        
+        
+             
+        
+    
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <h1 id="introduction">Introduction</h1>
+<h2 id="features">Features</h2>
+<ul>
+  <li>Preemptive multitasking</li>
+  <li>Virtual memory</li>
+  <li>Shared libraries</li>
+  <li>Demand loading, dynamic kernel modules</li>
+  <li>TCP/IP networking</li>
+  <li>Symmetrical Multi-Processing support</li>
+  <li>Open source</li>
+</ul>
+
+<h2 id="two-modes-in-linux">Two modes in Linux</h2>
+<ul>
+  <li>User mode: application software(including different libraries)</li>
+  <li>Kernel mode: system calls, linux kernel, hardware</li>
+</ul>
+
+<h2 id="whats-a-kernel">What’s a kernel</h2>
+<ul>
+  <li>executive system monitor</li>
+  <li>controls and mediates access to hardware</li>
+  <li>implements and supports fundamental abstractions (processes, files, devices)</li>
+  <li>schedules/allocates system resources (memory, cpu, disk, descriptors)</li>
+  <li>security and protection</li>
+  <li>respond to user requests for service (system calls)</li>
+</ul>
+
+<h2 id="kernel-design-goal">Kernel design goal</h2>
+<p>performance, stability, capability, security and protection, portability, extensibility</p>
+
+<h2 id="linux-source-tree-directories">Linux source tree (directories)</h2>
+<ul>
+  <li>/root : the home directory for the root user</li>
+  <li>/home : the user’s home directories along with directories for services (ftp, http…)</li>
+  <li>/bin : commands needed during booting up that may be needed by normal users</li>
+  <li>/sbin : similar to /bin. but not intended for normal users. run by Linux.</li>
+  <li>/proc : a virtual file system that exits in the kernels imagination, which is memory. not on a disk.
+    <ul>
+      <li>a directory with info about process number</li>
+      <li>each process has a directory below /proc</li>
+    </ul>
+  </li>
+  <li>/usr : contain all commands, libraries, man pages, games and static files for normal operations</li>
+  <li>/boot : files used bu the bootstrap loader. kernel images are often kept here.</li>
+  <li>/lib : shared libraries needed by the programs on the root file system</li>
+  <li>/modules : loadable kernel modules, especially those needed to boot the system after disasters</li>
+  <li>/dev : device files</li>
+  <li>/etc : configuration files specific to the machine</li>
+  <li>/skel : when a home directory is created, it is initialized with files from this directory</li>
+  <li>/sysconfig : files that configure the linux system for devices</li>
+  <li>/var : files that change for mail, news , printers log files, man pages, temp files</li>
+  <li>/mnt : mount points for temporary mounts by the system administrator</li>
+  <li>/tmp : temporary files. programs running after bootup should use /var/tmp</li>
+</ul>
+
+<h2 id="linuxarch">linux/arch</h2>
+<ul>
+  <li>subdirectories for each current port</li>
+  <li>each contains <strong>kernel, lib, mm, boot</strong> and other directories whose contents override code stubs in architecture independent code</li>
+</ul>
+
+<h2 id="linuxdrivers">linux/drivers</h2>
+<ul>
+  <li>largest amount of code in the kernel tree</li>
+  <li>device, bus, platform and general directories</li>
+</ul>
+
+<h2 id="linuxfs">linux/fs</h2>
+<ul>
+  <li>contains virtual file system framework (VFS) and subdirectories for actual file systems</li>
+</ul>
+
+<h2 id="linuxinclude">linux/include</h2>
+<ul>
+  <li>include/asm-* : architecture-dependent include subdirectories</li>
+  <li>include/linux :
+    <ul>
+      <li>header info needed both by the kernel and user apps</li>
+      <li>usually linked to /usr/include/linux</li>
+      <li>kernel-only portions guarded by
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  #ifdef__KERNEL__
+  /* kernel stuff */
+  #endif
+</code></pre></div>        </div>
+        <h2 id="linuxinit">linux/init</h2>
+      </li>
+    </ul>
+  </li>
+  <li>version.c : contains the version banner that prints at boot</li>
+  <li>main.c : architecture-independent boot code (start_kernel is the main entry point)</li>
+</ul>
+
+<h2 id="linuxkernel">linux/kernel</h2>
+<ul>
+  <li>the core kernel code</li>
+  <li>sched.c : the main kernel file (scheduler, wait queues, timers, alarms, task queues)</li>
+  <li>process control : fork.c, exec.c, signal.c, exit.c etc…</li>
+  <li>kernel module support : kmod.c, ksyms.c, module.c</li>
+  <li>other operations : time.c, resource.c, dma.c, printk.c, info.c, sys.c …</li>
+</ul>
+
+<h2 id="linuxlib">linux/lib</h2>
+<ul>
+  <li>kernel code cannot call standard C library routines</li>
+</ul>
+
+<h2 id="linuxmm">linux/mm</h2>
+<ul>
+  <li>paging and swapping</li>
+  <li>allocation and deallocation</li>
+  <li>memory mapping</li>
+</ul>
+
+<h2 id="linuxscripts">linux/scripts</h2>
+<p>scripts for:</p>
+<ul>
+  <li>menu-based kernel configuration</li>
+  <li>kernel patching</li>
+  <li>generating kernel documentation</li>
+</ul>
+
+<h2 id="summary">Summary</h2>
+<ul>
+  <li>Linux is a modular, UNIX-like monolithic kernel</li>
+  <li>kernel is the heart of the OS that executes with special hardware permission (kernel mode)</li>
+  <li>“core kernel” provides framework, data structures, support for drivers, modules, subsystems</li>
+  <li>architecture dependent source subtrees live in /arch</li>
+</ul>
+
+<h3 id="booting">Booting</h3>
+
+<h2 id="how-computer-startup">How computer startup?</h2>
+<ul>
+  <li><strong>booting</strong> is a bootstrapping process that starts operating systems when the user turns on a computer system</li>
+  <li>a <strong>boot sequence</strong> is the set of operations the computer performs when it is switched on that load an operating system</li>
+</ul>
+
+<h2 id="booting-sequence">Booting sequence</h2>
+<ul>
+  <li>Turn on</li>
+  <li>CPU jump to address of BIOS (0xFFFF0)</li>
+  <li>BIOS runs POST (Power-On Self Test)</li>
+  <li>Find bootable devices</li>
+  <li>Load and execute boot sector from MBR</li>
+  <li>Load OS</li>
+</ul>
+
+<h2 id="bios-basic-inputoutput-system">BIOS (Basic Input/Output System)</h2>
+<ul>
+  <li>BIOS refers to the software code run by a computer when first powered on</li>
+  <li>the primary function is code program embedded on a chip and controls various devices that make up the computer</li>
+</ul>
+
+<h2 id="mbr-master-boot-record">MBR (Master Boot Record)</h2>
+<p><img src="https://lantaoyu.github.io/files/linux-figures/MBR.JPG" alt="MBR" /></p>
+
+<ul>
+  <li>OS is booted from a hard disk, where MBR contains the primary boot loader</li>
+  <li>The MBR is a 512-byte sector, located in the first sector in the disk (sector 1 of cylinder 0, head 0)</li>
+  <li>After the MBR is loaded into RAM, the BIOS yields control to it</li>
+  <li>The first 446 bytes are the primary boot loader, which contains both executable code and error message</li>
+  <li>The next 64 bytes are the partition table, which contains a record for each of four partitions</li>
+  <li>The MBR ends with two bytes that are defined as the magic number (0xAA55 or 0x55AA). 
+The magic number serves as a validation check of the MBR.</li>
+  <li>To see the contents of MBR, use:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  sudo dd if=/dev/sda of=mbr.bin bs=512 count=1
+  od -xa mbr.bin
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="boot-loader">Boot loader</h2>
+<ul>
+  <li>more aptly called the kernel loader. the task at this stage is to load the linux kernel</li>
+  <li>optional, initial RAM disk</li>
+  <li>GRUB and LILO are the most popular Linux boot loader
+    <ul>
+      <li>GRUB: GRand Unified Bootloader
+        <ul>
+          <li>an operating system independent bootloader</li>
+          <li>a multiboot software packet from GNU</li>
+          <li>flexible command line interface</li>
+          <li>file system access</li>
+          <li>support multiple executable format</li>
+          <li>support diskless system</li>
+          <li>download OS from network</li>
+        </ul>
+      </li>
+      <li>LILO: LInux LOader
+        <ul>
+          <li>not dependent on a specific file system</li>
+          <li>can boot from hard disk and floppy</li>
+          <li>up to 16 different images</li>
+          <li>must change LILO when kernel image file or config file is changed</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="kernel-image">Kernel Image</h2>
+<ul>
+  <li>The kernel is the central part in most OS beacause of its task, which is the management of the system’s resources and the communication between hardware and software components.</li>
+  <li>kernel always store in memory until computer is turned off.</li>
+  <li>kernel image is not an executable kernel, but a compressed kernel image</li>
+  <li>zImage size is less than 512 KB</li>
+  <li>bzImage is larger than 512 KB</li>
+</ul>
+
+<h2 id="task-of-kernel">Task of kernel</h2>
+<ul>
+  <li>process management</li>
+  <li>memory management</li>
+  <li>device management</li>
+  <li>system call</li>
+</ul>
+
+<h2 id="init-process">Init process</h2>
+<ul>
+  <li>the first thing the kernel does is to execute init process</li>
+  <li>init is the root/parent of all processes executing in linux, and is responsible for staring all other processes</li>
+  <li>the first process that init starts is a script: /etc/rc.d/rc.sysinit</li>
+  <li>based on the appropriate run-level, scripts are executed to start various processes to run the system and make it functional</li>
+  <li>the init process id is “1”</li>
+  <li>init is responsible for starting system processes defined in /etc/inittab file</li>
+  <li>init typically will start multiple instances of “getty”, which waits for console logins which spawn one’s user shell process</li>
+  <li><strong>upon shutdown, init control the sequence and processes for shutdown</strong></li>
+</ul>
+
+<h2 id="runlevels">Runlevels</h2>
+<ul>
+  <li>a runlevel is a software configuration of the system which allows only a selected group of processes to exist</li>
+  <li>init can be in one of seven runlevels: 0-6</li>
+</ul>
+
+<h2 id="rcd-files">rc#.d files</h2>
+<ul>
+  <li>rc#.d files are the scripts for a given runlevel that run during boot and shutdown</li>
+  <li>the scripts are found in /etc/rc.d/rc#.d, where the symbol # represents the run level</li>
+</ul>
+
+<h2 id="initd">init.d</h2>
+<ul>
+  <li>deamon is a background process</li>
+  <li>init.d is a directory that admin can start/stop individual deamons by changing on it</li>
+  <li>admin can issue the command and either the satrt, stop, status, restart or reload option</li>
+  <li>e.g. to stop the web server
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  cd /etc/rc.d/init.d/
+  httpd stop
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="实模式下的系统初始化">实模式下的系统初始化</h2>
+<ul>
+  <li>setup.S连同内核映象由bootsect.S装入。setup.S从BIOS获取计算机系统的参数,放到内存参数区,仍在实模式下运行</li>
+  <li>辅助程序setup为内核映象的执行做好准备,然后跳转到0x10000(小内核),0x100000(大内核)开始内核本身的执行,此后就是内核的初始化过程</li>
+  <li>setup.S:
+    <ul>
+      <li>版本检查和参数设置</li>
+      <li>为进入保护模式做准备</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="保护模式下的系统初始化">保护模式下的系统初始化</h2>
+<ul>
+  <li>初始化寄存器和数据区</li>
+  <li>核心代码解压缩：调用<code class="language-plaintext highlighter-rouge">mics.c</code> 中的 <code class="language-plaintext highlighter-rouge">decompress_kernel</code></li>
+  <li>页表初始化</li>
+  <li>初始化 idt, gdt, ldt</li>
+  <li>启动核心
+    <ul>
+      <li>前面是对CPU进行初始化，并启动保护模式</li>
+      <li>现在的任务是初始化内核的核心数据结构，主要涉及：
+        <ul>
+          <li>中断管理</li>
+          <li>进程管理</li>
+          <li>内存管理</li>
+          <li>设备管理</li>
+        </ul>
+      </li>
+      <li>进入保护模式后，系统从<code class="language-plaintext highlighter-rouge">start_kernel</code>开始执行，<code class="language-plaintext highlighter-rouge">start_kernel</code>函数变成0号进程，不再返回</li>
+      <li><code class="language-plaintext highlighter-rouge">Start_kernel</code>显示版本信息,调用<code class="language-plaintext highlighter-rouge">setup_arch()</code>初始化核心的数据结构</li>
+      <li>最后,调用<code class="language-plaintext highlighter-rouge">kernel_thread()</code>创建1号进程<code class="language-plaintext highlighter-rouge">init</code>进程</li>
+      <li>父进程创建<code class="language-plaintext highlighter-rouge">init</code>子进程之后,返回执行<code class="language-plaintext highlighter-rouge">cpu_idle</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="qa">Q&amp;A</h2>
+<ol>
+  <li>Q: 在i386中,内核可执行代码在内存中的首地址是否可随意选择?<br />
+A: 从原理上讲是可以的,但实际上要考虑许多因素。例如微机内存的低端1MB的地址空间是不连续的。所以要把内核代码放在低端就要看是否能放的下。如果内核代码模块太大就不能将内核放在低端。</li>
+  <li>Q: 主引导扇区位于硬盘的什么位置,如果一个硬盘的主引导扇区有故障此硬盘是否还可以使用?<br />
+A: 主引导扇区位于硬盘的0面0道1扇区。一般来讲如果一个硬盘的主引导扇区有故障,此硬盘虽然可以使用,但不能作为引导盘使用了,因为它的主引导扇区不能读出内容。</li>
+</ol>
+
+<h2 id="proc-file-system-and-kernel-module-programming">/proc File System and Kernel Module Programming</h2>
+<h2 id="what-is-a-kernel-module">What is a kernel module?</h2>
+<ul>
+  <li>(wiki) an object file that contains code to extend the running kernel</li>
+  <li>(RedHat) modules are pieces of code that can be loaded and unloaded into the kernel upon demand
+    <h2 id="advantages-and-disadvantages">advantages and disadvantages</h2>
+  </li>
+  <li>advantages:
+    <ul>
+      <li>allowing the dynamic insertion and removal of code from the kernel at run-time</li>
+      <li>save memory cost</li>
+    </ul>
+  </li>
+  <li>disadvantages: fragmentation penalty -&gt; decrease memory performance</li>
+</ul>
+
+<h2 id="current-kernel-modules">current kernel modules</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd /lib/modules/2.6.32-22-generic/
+find . -name "*.ko"
+</code></pre></div></div>
+<h2 id="current-loaded-modules">current loaded modules</h2>
+<p><code class="language-plaintext highlighter-rouge">lsmod</code> or <code class="language-plaintext highlighter-rouge">cat /proc/modules</code></p>
+
+<h2 id="proc">/proc</h2>
+<ul>
+  <li>a pseudo file system</li>
+  <li>real time, resides in the <strong>virtual memory</strong></li>
+  <li>tracks the processes running on the machine and the state of the system</li>
+  <li>a new /proc file system is created every time your linux machine reboots</li>
+  <li>highly dynamic. the size of the proc directory is 0 and the last time of modification is the last bootup time</li>
+  <li>/proc file system doesn’t exist on any particular media</li>
+  <li>the contents of the /proc file system can be read by anyone who has the requisite permissions</li>
+  <li>certain parts of the /proc file system can be read only by the owner of the process and of course root (some not even by root)</li>
+  <li>the contents of the /proc are used by many utilities which grab the data from the particular /proc directory and display it. e.g. top, ps, lspci, dmesg etc</li>
+</ul>
+
+<h2 id="tweak-kernel-parameters">Tweak kernel parameters</h2>
+<ul>
+  <li>/proc/sys: making changes to this directory enables you to make real time changes to certain kernel parameters</li>
+  <li>e.g. /proc/sys/net/ipv4/ip_forward, which has value of “0”, which can be seen using <code class="language-plaintext highlighter-rouge">cat</code>. This can be changed in real time by <code class="language-plaintext highlighter-rouge">echo 1 &gt; /proc/sys/net/ipv4/ip_forward</code>, thus allowing IP forwarding.</li>
+</ul>
+
+<h2 id="details-of-some-files-in-proc">Details of some files in /proc</h2>
+<ul>
+  <li><strong>buddyinfo</strong>: contains the number of free areas of each order for the kernel buddy system</li>
+  <li><strong>cmdline</strong>: kernel command line</li>
+  <li><strong>cpuinfo</strong>: human-readable information about the processors</li>
+  <li><strong>devices</strong>: list of device drivers configured into the currently running kernel (block and character)</li>
+  <li><strong>dma</strong>: shows which DMA channels are being used at the moment</li>
+  <li><strong>execdomains</strong>: related to security</li>
+  <li><strong>fb</strong>: frame buffer devices</li>
+  <li><strong>filesystems</strong>: filesystems configured/supported into/by the kernel</li>
+  <li><strong>interrupts</strong>: number of interrupts per IRQ on the x86 architecture</li>
+  <li><strong>iomem</strong>:  shows the current map of the system’s memory for its various devices</li>
+  <li><strong>ioports</strong>: provides a list of currently registered port regions used for input or output communication with a device</li>
+  <li><strong>kcore</strong>:
+    <ul>
+      <li>this file represents the physical memory of the system and is stored in the core file format</li>
+      <li>unlike most /proc files, kcore does display a size. This value is given in bytes and is equal to the size of physical memory (RAM) used plus 4 KB.</li>
+      <li>its content are designed to be examined by a debugger, such as gdb, the GNU Debugger</li>
+      <li>only root user has the rights to view this file</li>
+    </ul>
+  </li>
+  <li><strong>kmsg</strong>: used to hold messages generated by the kernel, which are then picked up by other programs, such as <code class="language-plaintext highlighter-rouge">klogd</code></li>
+  <li><strong>loadavg</strong>:
+    <ul>
+      <li>provides a look at load average</li>
+      <li>the first three columns measure CPU utilization of the last 1, 5 and 10 minutes periods.</li>
+      <li>the fourth column shows the number of currently running processes and the total number of processes</li>
+      <li>the last column displays the last process ID used</li>
+    </ul>
+  </li>
+  <li><strong>locks</strong>: displays the files currently locked by the kernel</li>
+  <li><strong>mdstat</strong>: contains the current information for multiple-disk, RAID configurations</li>
+  <li><strong>meminfo</strong>:
+    <ul>
+      <li>one of the most commonly used /proc files</li>
+      <li>it reports plenty of valuable information about the current utilization of RAM on the system</li>
+    </ul>
+  </li>
+  <li><strong>misc</strong>: this files lists miscellaneous drivers registered on the miscellaneous major device, which is number 10</li>
+  <li><strong>modules</strong>: displays a list of all modules that have been loade by the system</li>
+  <li><strong>mounts</strong>: provides a quick list of all mounts in use by the system</li>
+  <li><strong>mtrr</strong>: refers to the current Memory Type Range Registers (MTRRs) in use with the system</li>
+  <li><strong>partitions</strong>: detailed information on the various partitions currently available to the system</li>
+  <li><strong>pci</strong>: full list of every PCI device on your system</li>
+  <li><strong>slabinfo</strong>: information about the memory usage on the slab level</li>
+  <li><strong>stat</strong>: keeps track of a variety of different statistics about the system since it was last restarted</li>
+  <li><strong>swap</strong>: measure swap space and its uilization</li>
+  <li><strong>uptime</strong>: contains information about how long the system has on since its last restart</li>
+  <li><strong>version</strong>: tells the versions of the kinux kernel and gcc, as well as the version of red hat linux installed on the system</li>
+</ul>
+
+<h2 id="the-numerical-named-directories">The numerical named directories</h2>
+<ul>
+  <li>the processed that are running at the instant a snapshot of the /proc file system was taken</li>
+  <li>the contents of all the directories are the same as these directories contain the carious parameters and status of the corresponding process</li>
+  <li>you have full access only to the processes that you have started</li>
+</ul>
+
+<h2 id="a-typical-process-directory">A typical process directory</h2>
+<ul>
+  <li>cmdline: contains the whole command line used to invoke the process. the contents of this file are the command line arguments with all the parameters (without formatting/spaces)</li>
+  <li>cwd: symbolic link to the current working directory</li>
+  <li>environ: contains all the process-specific environment variables</li>
+  <li>exe: symbolic link of the executable</li>
+  <li>maps: parts of the process’ address space mapped to a file</li>
+  <li>fd: this directory contains the list of file descriptors as opened by the particular process</li>
+  <li>root: symbolic link pointing to the directory which is the root file system for the particular process</li>
+  <li>status: information about the process</li>
+</ul>
+
+<h2 id="other-subdirectories-in-proc">Other subdirectories in /proc</h2>
+<ul>
+  <li>/proc/self: link to the currently running process</li>
+  <li>/proc/bus:
+    <ul>
+      <li>contains information specific to the various buses available on the system</li>
+      <li>for ISA, PCI and USB buses, current data on each is available in /proc/bus/&lt;bus type directory&gt;</li>
+      <li>individual bus directories, signified with numbers, contains binary files that refer to the various devices available on that bus</li>
+    </ul>
+  </li>
+  <li>/proc/driver: specific drivers in use by kernel</li>
+  <li>/proc/fs: specific file system, file handle, inode, dentry and quota information</li>
+  <li>/proc/ide: information abput IDE devices</li>
+  <li>/proc/irq: used to set IRQ to CPU affinity</li>
+  <li>/proc/net: networking parameters and statistics
+    <ul>
+      <li>arp: kernel’s ARP table. useful for connecting hardware address to an IP address on a system</li>
+      <li>dev: lists the network devices along with transmit and receive statistics</li>
+      <li>route: displays the kernel’s routing table</li>
+    </ul>
+  </li>
+  <li>/proc/scsi: like /proc/ide, it gives info about scsi devices</li>
+  <li>/proc/sys:
+    <ul>
+      <li>allows you to make configuration changes to a running kernel, by <code class="language-plaintext highlighter-rouge">echo</code> command</li>
+      <li>any configuration changes made will disappear when the system is restarted</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="procsys-subdirectories">/proc/sys subdirectories</h2>
+<ul>
+  <li>/proc/sys/dev: provides parameters for particular devices on the system. e.g. <code class="language-plaintext highlighter-rouge">cdrom/info</code>: many important CD-ROM parameters</li>
+  <li>/proc/sys/kernel:
+    <ul>
+      <li>acct: controls the suspension of process accounting based on the percentage of free space available on the filesystem containing the log</li>
+      <li>ctrl-alt-del: controls whether [Ctrl]-[Alt]-[Delete] will gracefully restart the computer using init (value 0) or force an immediate reboot without syncing the dirty buffers to disk (value 1).</li>
+      <li>domainname: allows you to configure the system’s domain name, such as domain.com.</li>
+      <li>hostname: allows you to configure the system’s host name, such as host.domain.com</li>
+      <li>threads-max: sets the maximum number of threads to be used in the kernel, with a default value of 4096</li>
+      <li>panic: defines the number of seconds the kernel will postpone rebooting the system when a kernel panic is experienced. By default, the value is set to 0, which disables automatic rebooting after a panic.</li>
+    </ul>
+  </li>
+  <li>/proc/sys/vm: facilitates the configuration of the Linux kernel’s virtual memory subsystem</li>
+</ul>
+
+<h2 id="advantages-and-disadvantages-of-the-proc-file-system">Advantages and disadvantages of the /proc file system</h2>
+<ul>
+  <li>advantages:
+    <ul>
+      <li>coherent, intuitive interface to the kernel</li>
+      <li>great for tweaking and collecting status info</li>
+      <li>easy to use and programming</li>
+    </ul>
+  </li>
+  <li>disadvantages:
+    <ul>
+      <li>certain amount of overhead, must use fs calls, alleviated somewhat by sysctl() interface</li>
+      <li>user can possibly cause system instability</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="proc-file-system-entries">/proc file system entries</h2>
+<ul>
+  <li>to use any of the procfs functions, you have to include the correct header file <code class="language-plaintext highlighter-rouge">#include &lt;linux/proc_fs.h&gt;</code></li>
+  <li><code class="language-plaintext highlighter-rouge">struct proc_dir_entry* create_proc_entry(const char* name, mode_t mode, struct proc_dir_entry* parent);</code>
+    <ul>
+      <li>this function creates a regular file with the name <code class="language-plaintext highlighter-rouge">name</code>, the mode <code class="language-plaintext highlighter-rouge">mode</code> in the directory <code class="language-plaintext highlighter-rouge">parent</code></li>
+      <li>to create a file in the root of the procfs, use <code class="language-plaintext highlighter-rouge">NULL</code> as <code class="language-plaintext highlighter-rouge">parent</code> parameter</li>
+      <li>when successful, the function will return a pointer to the freshly created <code class="language-plaintext highlighter-rouge">struct proc_dir_entry</code></li>
+      <li>e.g. <code class="language-plaintext highlighter-rouge">foo_file = create_proc_entry("foo", 0644, example_dir);</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">struct proc_dir_entry* proc_mkdir(const char* name, struct proc_dir_entry* parent);</code>
+    <ul>
+      <li>create a directory <code class="language-plaintext highlighter-rouge">name</code> in the procfs directory <code class="language-plaintext highlighter-rouge">parent</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">struct proc_dir_entry* proc_symlink(const char* name, struct proc_dir_entry* parent, const char* dest);</code>
+    <ul>
+      <li>this creates a symlink in the procfs directory <code class="language-plaintext highlighter-rouge">parent</code> that points from <code class="language-plaintext highlighter-rouge">name</code> to <code class="language-plaintext highlighter-rouge">dest</code>. this translates in userland to ln -s dest name</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">void remove_proc_entry(const char* name, struct proc_dir_entry* parent);</code>
+    <ul>
+      <li>removes the entry <code class="language-plaintext highlighter-rouge">name</code> in the directory <code class="language-plaintext highlighter-rouge">parent</code> from the procfs.</li>
+      <li>be sure to free the data entry from the struct <code class="language-plaintext highlighter-rouge">proc_dir_entry</code> before the function is called</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="tips">Tips</h2>
+<ul>
+  <li>modules can only use APIs exported by kernel and other modules
+    <ul>
+      <li>no libcs</li>
+      <li>kernel exports some common APIs</li>
+    </ul>
+  </li>
+  <li>modules are part of kernel
+    <ul>
+      <li>modules can control the whole system</li>
+      <li>as a result, can damage the whole system</li>
+    </ul>
+  </li>
+  <li>modules basically can’t be written with C++</li>
+  <li>determine which part should be in kernel</li>
+</ul>
+
+<h1 id="process-management">Process Management</h1>
+
+<h2 id="processes-lightweight-processes-and-threads">Processes, Lightweight Processes and Threads</h2>
+<ul>
+  <li>Process: an instance of a program in execution</li>
+  <li>(User) Thread: an execution flow of the process
+    <ul>
+      <li>Pthread (POSIX thread) library</li>
+    </ul>
+  </li>
+  <li>Lightweight process (LWP): used to offer better support for multithreaded applications
+    <ul>
+      <li>LWP may share resources: address space, open files…</li>
+      <li>To associate a lightweight process with each thread</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="process-descriptor">Process descriptor</h2>
+<p><code class="language-plaintext highlighter-rouge">task_struct</code> data structure:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">state</code>: process state</li>
+  <li><code class="language-plaintext highlighter-rouge">thread_info</code>: low-level information for the process</li>
+  <li><code class="language-plaintext highlighter-rouge">mm</code>: pointers to memory area descriptors</li>
+  <li><code class="language-plaintext highlighter-rouge">tty</code>: tty associated with the process</li>
+  <li><code class="language-plaintext highlighter-rouge">fs</code>: current directory</li>
+  <li><code class="language-plaintext highlighter-rouge">files</code>: pointers to file descriptors</li>
+  <li><code class="language-plaintext highlighter-rouge">signal</code>: signals received</li>
+</ul>
+
+<h2 id="process-state">Process state</h2>
+<ul>
+  <li>TASK_RUNNING: 该状态表示进程处于可运行状态，也就是说要么正在CPU中运行，要么在runqueue队列中等待运行</li>
+  <li>TASK_INTERRUPTABLE: 该状态表示进程处于可中断的睡眠状态。该进程正处在睡眠，但是可以被任何信号唤醒。当信号将该进程唤醒后，进程会去对信号做出响应。</li>
+  <li>TASK_UNINTERRUPTABLE: 该状态表示进程处于不可中断的睡眠状态。该进程正处于睡眠，专心等待某一个事件（一般是IO事件），并且不希望被其他信号唤醒。</li>
+  <li>TASK_STOPPED</li>
+  <li>TASK_TRACED</li>
+  <li>EXIT_ZOMBIE: 该状态是该进程变为僵尸进程，即其父进程没有对该进程的结束信号进行处理</li>
+  <li>EXIT_DEAD</li>
+</ul>
+
+<h2 id="identifying-a-process">Identifying a process</h2>
+<ul>
+  <li>process descriptor pointers: 32 bits</li>
+  <li>process ID (PID): 16 bits (~32767 for compatibility)
+    <ul>
+      <li>linux associates different PID with each process or LWP</li>
+      <li>programmers expect threads in the same group to have a common PID</li>
+      <li>thread group: a collection of LWPs
+        <ul>
+          <li>the PID of the first LWP in the group</li>
+          <li><code class="language-plaintext highlighter-rouge">tgid</code> field in process descriptor: using <code class="language-plaintext highlighter-rouge">getpid()</code> system call</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="the-process-list">The process list</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">tasks</code> field in <code class="language-plaintext highlighter-rouge">task_struct</code> structure
+    <ul>
+      <li>type <code class="language-plaintext highlighter-rouge">list_head</code></li>
+      <li><code class="language-plaintext highlighter-rouge">prev</code>, <code class="language-plaintext highlighter-rouge">next</code> fields point to the previous and the next <code class="language-plaintext highlighter-rouge">task_struct</code></li>
+    </ul>
+  </li>
+  <li>process 0 (swapper): <code class="language-plaintext highlighter-rouge">init_task</code></li>
+</ul>
+
+<h2 id="parenthood-relationships-among-processes">Parenthood relationships among processes</h2>
+<ul>
+  <li>process 0 and 1: created by the kernel
+    <ul>
+      <li>process 1 <code class="language-plaintext highlighter-rouge">init</code>: the ancestor of all processes</li>
+    </ul>
+  </li>
+  <li>fields in process descriptor for parenthood
+    <ul>
+      <li>real_parent</li>
+      <li>parent</li>
+      <li>children</li>
+      <li>sibling</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="pidhash-table-and-chained-lists">Pidhash table and chained lists</h2>
+<ul>
+  <li>to support the search for the process descriptor of a PID, since sequential search in the process list is inefficient</li>
+  <li>the <code class="language-plaintext highlighter-rouge">pid_hash</code> array contains four hash tables and correspnding field in the process descriptor
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">pid</code>: PIDTYPE_PID</li>
+      <li><code class="language-plaintext highlighter-rouge">tgid</code>: PIDTYPE_TGID (thread group leader)</li>
+      <li><code class="language-plaintext highlighter-rouge">pgrp</code>: PIDTYPE_PGID (group leader)</li>
+      <li><code class="language-plaintext highlighter-rouge">session</code>: PIDTYPE_SID (session leader)</li>
+    </ul>
+  </li>
+  <li>chaining is used to handle PID collisions</li>
+  <li>the size of each pidhash table is dependent on the available memory</li>
+</ul>
+
+<h2 id="pid">PID</h2>
+<p><code class="language-plaintext highlighter-rouge">pids</code> field of the process descriptor: the pid data structure</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">nr</code>: PID number</li>
+  <li><code class="language-plaintext highlighter-rouge">pid_chain</code>: links to the previous and the next elements in the hash chain list</li>
+  <li><code class="language-plaintext highlighter-rouge">pid_list</code>: head of the per-PID list (in thread group)</li>
+</ul>
+
+<h2 id="how-processes-are-organized">How processes are organized</h2>
+<ul>
+  <li>processes in TASK_STOPPED, EXIT_ZOMBIE, EXIT_DEAD: not linked in lists</li>
+  <li>processes in TASK_INTERRUPTABLE, TASK_UNINTERRUPTABLE: waiting queues</li>
+  <li>two kinds of sleeping processes:
+    <ul>
+      <li>exclusive process</li>
+      <li>nonexclusive process: always woken up by the kernel when the event occurs</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="process-switch-task-switch-context-switch">Process switch, task switch, context switch</h2>
+<ul>
+  <li>hardware context switch: a far jmp (in older Linux)</li>
+  <li>software context switch: a sequence of mov instructions
+    <ul>
+      <li>allows better control over the validity of data being loaded</li>
+      <li>the amount of time required is about the same</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="performing-the-process-switch">Performing the process switch</h2>
+<ul>
+  <li>switch the page global directory</li>
+  <li>switch the kernel mode stack and the hardware context</li>
+</ul>
+
+<h2 id="task-state-segment">Task State Segment</h2>
+<p><strong>TSS</strong>: a specific segment type in x86 architecture to store <strong>hardware contexts</strong></p>
+
+<h2 id="creating-processes">Creating processes</h2>
+<ul>
+  <li>in traditional UNIX, resources owned by parent process are duplicated
+    <ul>
+      <li>very slow and inefficient</li>
+      <li>mechanisms to solve this problem
+        <ul>
+          <li>Copy on Write: parent and child read the same physical page</li>
+          <li>Ligitweight process (LWP): parent and child share per-process kernel data structures</li>
+          <li><code class="language-plaintext highlighter-rouge">vfork()</code> system call: parent and child share the memory address space</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="clone-fork-and-vfork-system-calls"><code class="language-plaintext highlighter-rouge">clone()</code>, <code class="language-plaintext highlighter-rouge">fork()</code> and <code class="language-plaintext highlighter-rouge">vfork()</code> system calls</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">clone(fn, arg, flags, child_stack, tls, ptid, ctid)</code>: creating lightweight process
+    <ul>
+      <li>a wrapper function in C library</li>
+      <li>Uses <code class="language-plaintext highlighter-rouge">clone()</code> system call</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">fork()</code> and <code class="language-plaintext highlighter-rouge">vfork()</code> system calls: implemented by <code class="language-plaintext highlighter-rouge">clone</code> with different parameters</li>
+  <li>each invokes <code class="language-plaintext highlighter-rouge">do_fork()</code> function</li>
+</ul>
+
+<h2 id="kernel-threads">Kernel threads</h2>
+<ul>
+  <li>kernel threads run only in kernel mode</li>
+  <li>they use only linear addresses greater than PAGE_OFFSET</li>
+  <li><code class="language-plaintext highlighter-rouge">kernel_thread()</code>: to create a kernel thread</li>
+  <li>example kernel threads:
+    <ul>
+      <li>process 0 (swapper process), the ancestor of all processes</li>
+      <li>process 1 (init process)</li>
+      <li>others: keventd, kapm…</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="destrying-processes">Destrying processes</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">exit()</code> library function
+    <ul>
+      <li>two system calls in Linux 2.6
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">_exit()</code> system call: handled by <code class="language-plaintext highlighter-rouge">do_exit()</code> function</li>
+          <li><code class="language-plaintext highlighter-rouge">exit_group()</code> system call: handled by <code class="language-plaintext highlighter-rouge">do_group_exit()</code> function</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>process removal: releasing the process descriptor of a zombie process by <code class="language-plaintext highlighter-rouge">release_task()</code></li>
+</ul>
+
+<h2 id="scheduling-policy">Scheduling policy</h2>
+<ul>
+  <li>based on time-sharing:
+    <ul>
+      <li>time slice</li>
+    </ul>
+  </li>
+  <li>based on priority ranking:
+    <ul>
+      <li>dynamic</li>
+    </ul>
+  </li>
+  <li>classification of processes:
+    <ul>
+      <li>interactive processes: e.g. shells, text editors, GUI applications</li>
+      <li>batch processes: e.g. compilers, database search engine, web server</li>
+      <li>real-time processes: e.g. audio/video applications, data-collection from physical sensors, robit controllers</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="process-preemption">Process preemption</h2>
+<ul>
+  <li>Linux (user) processes are preemptive
+    <ul>
+      <li>when a new process has higher priority than the current</li>
+      <li>when its time quantum expires, <code class="language-plaintext highlighter-rouge">TIF_NEED_RESCHED</code> in thread_info will be set</li>
+    </ul>
+  </li>
+  <li>a preempted process is not suspended since it remains in the <strong>TASK_RUNNING</strong> state</li>
+  <li>Linux kernel before 2.6 is nonpreemptive, simpler</li>
+</ul>
+
+<h2 id="how-long-should-a-quantum-last">How long should a quantum last</h2>
+<ul>
+  <li>neither too long nor too short:
+    <ul>
+      <li>too short: overhead for process switch</li>
+      <li>too long: process no longer appear to be executed concurrently</li>
+    </ul>
+  </li>
+  <li>always a compromise: the rule of thumb, to choose a duration as long as possible, while keeping good system response</li>
+</ul>
+
+<h2 id="scheduling-algorithm">Scheduling algorithm</h2>
+<ul>
+  <li>earlier version of Linux: simple and straightforward
+    <ul>
+      <li>at every process switch, scan the runnable processes, compute the priorities and select the best one to run</li>
+    </ul>
+  </li>
+  <li>much more complex in Linux 2.6
+    <ul>
+      <li>scales well with the number of processes and processors</li>
+      <li>constant time scheduling</li>
+    </ul>
+  </li>
+  <li>3 scheduling classes
+    <ul>
+      <li>SCHED_FIFO: first-in first-out real-time</li>
+      <li>SCHED_RR: round-robin real-time</li>
+      <li>SCHED_NORMAL: conventional time-shared processes</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="scheduling-of-conventional-processes">Scheduling of conventional processes</h2>
+<h2 id="static-priority">Static priority</h2>
+<ul>
+  <li>static priority
+    <ul>
+      <li>conventional processes: 100 - 139
+        <ul>
+          <li>can be changed by <code class="language-plaintext highlighter-rouge">nice()</code>, <code class="language-plaintext highlighter-rouge">setpriority()</code> system calls</li>
+        </ul>
+      </li>
+      <li>base time quantum: the time-quantum assigned by the scheduler if it has exhausted its previous time quantum <br />
+  <img src="https://lantaoyu.github.io/files/linux-figures/base_time_quantum.png" alt="base time quantum" /></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="dynamic-priority-and-average-sleep-time">Dynamic priority and average sleep time</h2>
+<ul>
+  <li>dynamic priority: 100 - 139</li>
+  <li><code class="language-plaintext highlighter-rouge">dynamic priority = max(100, min(static_priority - bonus + 5, 139))</code>
+    <ul>
+      <li>bonus: 0 - 10
+        <ul>
+          <li>&lt; 5: penalty</li>
+          <li>&gt; 5: premium</li>
+        </ul>
+      </li>
+      <li>dependent on the <strong>average sleep time</strong>: average number of nanoseconds that the process spent while sleeping</li>
+      <li>the more average sleep time, the more bonus:</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="determine-the-status-of-a-process">Determine the status of a process</h2>
+<p>To determine whether a process is considered to be interactive or batch</p>
+<ul>
+  <li>interactive if: dynamic_priority &lt;= 3 * static_priority / 4 + 28</li>
+  <li>i.e. <code class="language-plaintext highlighter-rouge">bonux - 5 &gt;= static_priority / 4 - 28</code>
+    <ul>
+      <li>interactive delta</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="active-and-expired-processes">Active and expired processes</h2>
+<ul>
+  <li>active processes: runnable processes that have not exhausted their time quantum</li>
+  <li>expired processes: runnable processes that have exhausted their time quantum</li>
+  <li>periodically, the role of processes changes</li>
+</ul>
+
+<h2 id="scheduling-of-real-time-processes">Scheduling of real-time processes</h2>
+<ul>
+  <li>real-time priority: 1 - 99</li>
+  <li>real-time processes are always considered active
+    <ul>
+      <li>can be changed by <code class="language-plaintext highlighter-rouge">sched_setparam()</code> and <code class="language-plaintext highlighter-rouge">sched_setscheduler()</code> system calls</li>
+    </ul>
+  </li>
+  <li>a real-time process is replaced only when:
+    <ul>
+      <li>another process has higher real-time priority</li>
+      <li>put to sleep by blocking operation</li>
+      <li>stopped or killed</li>
+      <li>voluntarily relinquishes the CPU by <code class="language-plaintext highlighter-rouge">sched_yield()</code> system call</li>
+      <li>for round-robin real time (SCHED_RR), time quantum exhausted</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="implementation-support-of-scheduling">Implementation Support of Scheduling</h2>
+
+<h2 id="data-structures-used-by-the-scheduler">Data structures used by the scheduler</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">runqueue</code> data structure for each CPU</li>
+  <li>two sets of runnable processes in the <code class="language-plaintext highlighter-rouge">runqueue</code> structure</li>
+  <li><code class="language-plaintext highlighter-rouge">prio_array_t</code> data structure
+    <ul>
+      <li>nr_active: # of process descriptors in the list</li>
+      <li>bitmap: priority bitmap</li>
+      <li>queue: the 140 list_heads</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="functions-used-by-the-scheduler">Functions used by the scheduler</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">scheduler_tick()</code>: keep the time_slice counter up-to-date</li>
+  <li><code class="language-plaintext highlighter-rouge">try_to_wake_up()</code> awaken a sleeping process</li>
+  <li><code class="language-plaintext highlighter-rouge">recalc_task_prio()</code>: updates the dynamic priority</li>
+  <li><code class="language-plaintext highlighter-rouge">load_balance()</code>: keep the runqueue of multiprocess system balanced</li>
+  <li><code class="language-plaintext highlighter-rouge">schedule()</code>: select a new process to run
+    <ul>
+      <li>Direct invocation:
+        <ul>
+          <li>when the process must be blocked to wait for resource</li>
+          <li>when long iterative tasks are executed in device drivers</li>
+        </ul>
+      </li>
+      <li>Lazy invocation: by setting the TIF_NEED_RESCHED flag
+        <ul>
+          <li>when current process has used up its quantum, by <code class="language-plaintext highlighter-rouge">scheduler_tick()</code></li>
+          <li>when a process is woken up, by <code class="language-plaintext highlighter-rouge">try_to_wake_up()</code></li>
+          <li>when a <code class="language-plaintext highlighter-rouge">sched_setscheduler()</code> system call is issued</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="runqueue-balancing-in-multiprocessor-systems">Runqueue balancing in multiprocessor systems</h2>
+<ul>
+  <li>3 types of multiprocessor systems
+    <ul>
+      <li>Classic multiprocessor architecture</li>
+      <li>Hyper-threading</li>
+      <li>NUMA</li>
+    </ul>
+  </li>
+  <li>A CPU can execute only the runnable processes in the corresponding runqueue</li>
+  <li>The kernel periodically checks if the workloads of the runqueues are balanced</li>
+</ul>
+
+<h2 id="scheduling-domains">Scheduling domains</h2>
+<p>A set of CPUs whose workloads are kept balanced by the kernel</p>
+<ul>
+  <li>hierarchically organized</li>
+  <li>partitioned into groups: a subset of CPUs</li>
+</ul>
+
+<h2 id="system-calls-related-to-scheduling">System calls related to scheduling</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">nice()</code>: for backward compatability only
+    <ul>
+      <li>allow processes to change their base priority</li>
+      <li>replaced by <code class="language-plaintext highlighter-rouge">setpriority()</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">getpriority()</code> and <code class="language-plaintext highlighter-rouge">setpriority()</code>:
+    <ul>
+      <li>act on the base priorities of all processes in a given group</li>
+      <li>which: PRIO_PROCESS, PRIO_PGRP, PRIO_USER</li>
+      <li>who: the value of pid, pgrp, or uid field to be used for selecting the processes</li>
+      <li>niceval: the new base priority value: -20 - +19</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">sched_getscheduler()</code>, <code class="language-plaintext highlighter-rouge">sched_setscheduler()</code>: queries/sets the scheduling policy</li>
+  <li><code class="language-plaintext highlighter-rouge">sched_getparam()</code>, <code class="language-plaintext highlighter-rouge">sched_setparam()</code>: queries/sets the scheduling parameters</li>
+  <li><code class="language-plaintext highlighter-rouge">sched_yield()</code>: to relinquish the CPU voluntarily without being suspended</li>
+  <li><code class="language-plaintext highlighter-rouge">sched_get_priority_min()</code>, <code class="language-plaintext highlighter-rouge">sched_get_priority_max()</code>: to return the minimum/maximum real-time static priority</li>
+  <li><code class="language-plaintext highlighter-rouge">sched_rr_get_interval()</code>: to write into user space the round-robin time quantum for real-time process</li>
+</ul>
+
+<h2 id="completely-fair-scheduler-cfs">Completely Fair Scheduler (CFS)</h2>
+<ul>
+  <li>Motivation of CFS: running task gets 100% usage of the CPU, all other tasks get 0% usage of the CPU</li>
+  <li>New scheduling algorithm in linux kernel 2.6</li>
+  <li>Design:
+    <ul>
+      <li>the same <strong>virtual runtime</strong> for each task</li>
+      <li>increasing the priority for sleeping task</li>
+    </ul>
+  </li>
+  <li>Implementation
+    <ul>
+      <li>stores the records about the planned tasks in a <strong>red-black tree</strong></li>
+      <li>pick efficiently the process that has used the least amount of time (the leftmost node of the tree)</li>
+      <li>the entry of the picked process is then removed form the tree, the spent execution time is updated and the entry is then returned to the tree where it normally takes some other location.</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="kernel-synchronization">Kernel synchronization</h1>
+<h2 id="kernel-control-paths">Kernel control paths</h2>
+<ul>
+  <li>Linux kernel: like a server that answers requests
+    <ul>
+      <li>parts of the kernel run in an interleaved way</li>
+    </ul>
+  </li>
+  <li>Kernel control path: a sequence of instructions executed in kernel mode on behalf of current process
+    <ul>
+      <li>interrupts and exceptions</li>
+      <li>lighter than a process (less context)</li>
+    </ul>
+  </li>
+  <li>Three CPU states are considered:
+    <ul>
+      <li>User: running a process in user mode</li>
+      <li>Excp: running an exception or a system call handler</li>
+      <li>Intr: running an interrupt handler</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="kernel-preemption">Kernel preemption</h2>
+<ul>
+  <li>Preemptive kernel: a process running in kernel mode can be replaced by another process while in the middle of a kernel function</li>
+  <li>The  main motivation for making a kernel preemptive is to reduce the <strong>dispatch latency</strong> of the user mode process
+    <ul>
+      <li>dispatch latency: delay between the time they become runnable and the time they actually begin running</li>
+    </ul>
+  </li>
+  <li>The kernel can be preempted only when it is excuting an exception handler (in particular a system call) and the kernel preemption has not been explicitly disabled</li>
+</ul>
+
+<h2 id="when-synchronization-is-necessary">When synchronization is necessary</h2>
+<ul>
+  <li>A <strong>race condition</strong> can occur when the outcome of a computation depends on how two or more interleaved kernel control paths are nested</li>
+  <li>To identify and protect the <strong>critical regions</strong> in exception handlers, interrupt handlers, deferrable functions, and kernel threads
+    <ul>
+      <li>On single CPU, critical region can be implemented by disabling interrupts while accessing shared data</li>
+      <li>If the same data is shared only by the service routines of system calls, critical region can be implemented by disabling kernel preemption while accessing shared data</li>
+    </ul>
+  </li>
+  <li>Things are more complicated on multiprocessor systems
+    <ul>
+      <li>different synchronization techniques are necessary</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="when-synchronization-is-not-necessary">When synchronization is not necessary</h2>
+<ul>
+  <li>The same interrupt cannot occur until the handler terminates</li>
+  <li>Interrupt handlers and softirqs are nonpreemptable, non-blocking</li>
+  <li>A kernel control path performing interrupt handling cannot be interrupted by a kernel control path executing a deferrable function or a system call service routine</li>
+  <li>Softirqs cannot be interleaved</li>
+</ul>
+
+<h2 id="per-cpu-variables">Per-CPU variables</h2>
+<ul>
+  <li>The simplest and most efficient synchronization technique consists of declaring kernel variables as per-cpu variables
+    <ul>
+      <li>an array of data structures, one element per CPU in the system</li>
+      <li>a CPU should not access the elements of the array corresponding to the other CPUs</li>
+    </ul>
+  </li>
+  <li>While per-cpu variables provide protection against concurrent accesses from several CPUs, they do not provide protection against accesses from asynchronous functions (interrupt handles and deferrable functions)</li>
+  <li>per-cpu variables are prone to race conditions caused by kernel preemption, both in uniprocessor and multiprocessor systems</li>
+</ul>
+
+<h2 id="memory-barriers">Memory Barriers</h2>
+<ul>
+  <li>when dealing with synchronization, instruction reordering must be avoided</li>
+  <li>a memory barrier primitive ensures that the operations before the primitive are finished before the operations after the primitive
+    <ul>
+      <li>all instructions that operate on I/O ports</li>
+      <li>all instructions prefixed by lock byte</li>
+      <li>all instructions that write into control registers, system registers or debug registers</li>
+      <li>a few special instructions, e.g. iret</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="spin-locks">Spin locks</h2>
+<ul>
+  <li>Spin locks are a special kind of lock designed to work in a multiprocessor environment
+    <ul>
+      <li>busy waiting</li>
+      <li>very convenient</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="readwrite-spin-locks">Read/Write Spin Locks</h2>
+<ul>
+  <li>To increase the amount of concurrency in the kernel
+    <ul>
+      <li>multiple reads, one write</li>
+    </ul>
+  </li>
+  <li>rwlock_t structure
+    <ul>
+      <li>lock field: 32 bit</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="seqlock">Seqlock</h2>
+<ul>
+  <li>Introduced in Linux 2.6</li>
+  <li>similar to read/write spin locks</li>
+  <li>except that they give a much higher priority to writers</li>
+  <li>a writer is allowed to proceed even when readers are active</li>
+</ul>
+
+<h2 id="read-copy-update">Read-Copy Update</h2>
+<ul>
+  <li>Read-Copy update (RCU): another synchronization technique designed to protect data structures that are mostly accessed for reading by several CPUs
+    <ul>
+      <li>RCU allows many readers and many writers to proceed concurrently</li>
+      <li>RCU is <strong>lock free</strong></li>
+    </ul>
+  </li>
+  <li>Key ideas
+    <ul>
+      <li>only data structures that are dynamically allocated and referenced via pointers can be protected by RCU</li>
+      <li>No kernel control path can sleep inside a critical section protected by RCU</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="semaphores">Semaphores</h2>
+<ul>
+  <li>two kinds of semaphores
+    <ul>
+      <li>kernel semaphores: by kernel control paths</li>
+      <li>System V IPC semaphores: by user processes</li>
+    </ul>
+  </li>
+  <li>Kernel semaphores
+    <ul>
+      <li>struct semaphore
+        <ul>
+          <li>count</li>
+          <li>wait</li>
+          <li>sleepers</li>
+        </ul>
+      </li>
+      <li><code class="language-plaintext highlighter-rouge">up()</code>: to release a kernel semaphore (similar to signal)</li>
+      <li><code class="language-plaintext highlighter-rouge">down()</code>: to acquire kernel semaphore (similar to wait)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="readwrite-semaphores">Read/Write semaphores</h2>
+<ul>
+  <li>similar to read/write spin locks
+    <ul>
+      <li>except that waiting processes are suspended instead of spinning</li>
+    </ul>
+  </li>
+  <li>struct rw_semaphore
+    <ul>
+      <li>count</li>
+      <li>wait_list</li>
+      <li>wait_lock</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">init_rwsem()</code></li>
+  <li><code class="language-plaintext highlighter-rouge">down_read()</code>, <code class="language-plaintext highlighter-rouge">down_write</code>: acquire a read/write semaphore</li>
+  <li><code class="language-plaintext highlighter-rouge">up_read()</code>,<code class="language-plaintext highlighter-rouge">up_write()</code>: release a read/write semaphore</li>
+</ul>
+
+<h2 id="completions">Completions</h2>
+<ul>
+  <li>to solve a subtle race condition in multiprocessor systems
+    <ul>
+      <li>similar to semaphores</li>
+    </ul>
+  </li>
+  <li>struct completion
+    <ul>
+      <li>done</li>
+      <li>wait</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">complete()</code>: corresponding to <code class="language-plaintext highlighter-rouge">up()</code></li>
+  <li><code class="language-plaintext highlighter-rouge">wait_for_completion()</code>: corresponding to <code class="language-plaintext highlighter-rouge">down()</code></li>
+</ul>
+
+<h2 id="local-interrupt-disabling">Local interrupt disabling</h2>
+<ul>
+  <li>interrupts can be disabled on a CPU with <code class="language-plaintext highlighter-rouge">cli</code> instructions
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">local_irq_disable()</code> macro</li>
+    </ul>
+  </li>
+  <li>interrupts can enabled by <code class="language-plaintext highlighter-rouge">sti</code> instructions
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">local_irq_enable()</code> macro</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="disablingenabling-deferrable-functions">Disabling/Enabling deferrable functions</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">softirq</code></li>
+  <li>the kernel sometimes need to disable deferrable functions without diabling interrupts
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">local_bh_disable()</code> macro</li>
+      <li><code class="language-plaintext highlighter-rouge">local_bh_enable()</code> macro</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="synchronizing-accesses-to-kernel-data-structures">Synchronizing accesses to kernel data structures</h2>
+<ul>
+  <li>rule of thumb for kernel developers:
+    <ul>
+      <li>always keep the concurrency level as high as possible in the system</li>
+      <li>two factors:
+        <ul>
+          <li>the number of I/O devices that operate concurrently</li>
+          <li>the number of CPUs that do productive work</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>a shared data structure consisting of a single integer value can be updated by declaring it as an <code class="language-plaintext highlighter-rouge">atomic_t</code> type and by using atomic operations</li>
+  <li>inserting an element into a shared linked list is never atomic since it consists of at leasr pointer assignments</li>
+</ul>
+
+<h2 id="examples-of-race-condition">Examples of race condition</h2>
+<ul>
+  <li>when a program uses two or more semaphores, the potential for deadlock is present because two different paths could wait for each other</li>
+  <li>Linux has few problems with deadlocks on semaphore requests since each path usually acquire just one semaphore</li>
+  <li>in cases such as <code class="language-plaintext highlighter-rouge">rmdir()</code> and <code class="language-plaintext highlighter-rouge">rename()</code> system calls, two semaphores requests</li>
+  <li>to avoid such deadlocks, semaphore requests are performed in address order</li>
+  <li>semaphore request are performed in predefined address order</li>
+</ul>
+
+<h1 id="symmetric-multiprocessing-smp">Symmetric multiprocessing (SMP)</h1>
+<h2 id="traditional-view">Traditional View</h2>
+<ul>
+  <li>Traditionally, the computer has been viewed as a sequential machine
+    <ul>
+      <li>a processor executes instructions one at a time in sequence</li>
+      <li>each instruction is a sequence of operations</li>
+    </ul>
+  </li>
+  <li>two popular approached to providing parallelism
+    <ul>
+      <li>symmetric multiprocesors</li>
+      <li>clusters</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="categories-of-computer-systems">Categories of computer systems</h2>
+<ul>
+  <li>single instruction single data (SISD) stream
+    <ul>
+      <li>single processor executes a single instruction stream to operate on data stored in a single memory</li>
+    </ul>
+  </li>
+  <li>Single instruction Multiple data (SIMD) stream
+    <ul>
+      <li>each instruction is executed on a different set of data by the different processors</li>
+    </ul>
+  </li>
+  <li>multiple instruction single data (MISD) stream
+    <ul>
+      <li>a sequence of data is transmitted to a set of processors, each execute a different instruction sequence</li>
+    </ul>
+  </li>
+  <li>multiple instruction multiple data (MIMD)
+    <ul>
+      <li>a set of processors simultaneously execute different instruction sequences on different data sets</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="symmetric-multiprocessing">Symmetric multiprocessing</h2>
+<ul>
+  <li>kernel can execute on any processor
+    <ul>
+      <li>allowing portions of the kernel to execute in parallel</li>
+      <li>typically each processor does self-scheduling from the pool of available process or threads</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="smp">SMP</h2>
+<ul>
+  <li><strong>Symmetric multiprocessing (SMP)</strong> involves a multiprocessor computer hardware and software where two or more identical processors connect to a single shared main memory, have full access to all I/O devices and are controlled by a single OS instance that treats all processors equally, reserving none for special purposes</li>
+  <li>Most multiprocessor systems today use an SMP architecture. In the case of multi-core processors, the SMP architecture applies to the cores, treating them as seperate processors</li>
+</ul>
+
+<h2 id="linux-support-for-smp">Linux Support for SMP</h2>
+<ul>
+  <li>启动过程:BSP负责操作系统的启动,在启动的最后阶段,BSP通过IPI激活各个AP,在系统的正常运行过程中,BSP和AP基本上是无差别的</li>
+  <li>进程调度:与单处理器系统的主要差别是执行进程切换后,被换下的进程有可能会换到其他CPU上继续运行。在计算优先权时,如果进程上次运行的CPU也是当前CPU,则会适当提高优先权,这样可以更有效地利用Cache</li>
+  <li>中断系统:为了支持SMP,在硬件上需要APIC中断控制系统。Linux定义了各种IPI的中断向量以及传送IPI的函数</li>
+</ul>
+
+<h2 id="numa">NUMA</h2>
+<ul>
+  <li><strong>Non-uniform memory access (NUMA)</strong> is a computer memory design used in multiprocessing, where the memory access time depends on the memory location relative to the processor</li>
+  <li>Under NUMA, a processor can access its own local memory faster than non-local memory (memory local to another processor or memeory shared between processors)</li>
+  <li>Benefits: the benefits of NUMA are limited to particular workloads, notably on servers where the data are often associated strongly with certain tasks or users</li>
+</ul>
+
+<h2 id="smp-系统启动过程">SMP 系统启动过程</h2>
+<ol>
+  <li>BIOS初始化：屏蔽AP(Application Processor),建立系统配置表</li>
+  <li>MBR里面的引导程序(LILO,GRUB等)将内核载入内存</li>
+  <li>执行 <code class="language-plaintext highlighter-rouge">head.S</code>中的 <code class="language-plaintext highlighter-rouge">startup_32</code>函数，最后调用 <code class="language-plaintext highlighter-rouge">start_kernel</code></li>
+  <li>执行 <code class="language-plaintext highlighter-rouge">start_kernel</code>，这个函数相当于应用程序里面的 <code class="language-plaintext highlighter-rouge">main</code> 函数</li>
+  <li><code class="language-plaintext highlighter-rouge">start_kernel</code> 进行一系列的初始化工作，最后将执行:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">smp_init</code>:关键的一步，启动各AP</li>
+      <li><code class="language-plaintext highlighter-rouge">rest_init</code>，调用 <code class="language-plaintext highlighter-rouge">init</code> 创建1号 <code class="language-plaintext highlighter-rouge">init</code> 进程，自身调用 <code class="language-plaintext highlighter-rouge">cpu_idle</code>成为0号进程</li>
+    </ul>
+  </li>
+  <li>1号进程 <code class="language-plaintext highlighter-rouge">init</code> 完成剩下的工作</li>
+</ol>
+
+<h2 id="reschedule_idle-工作过程"><code class="language-plaintext highlighter-rouge">reschedule_idle</code> 工作过程</h2>
+<ol>
+  <li>先检查p进程上一次运行的cpu是否空闲，如果空闲，这是最好的cpu，直接返回。</li>
+  <li>找一个合适的cpu，查看SMP中的每个CPU上运行的进程，与p进程相比的抢先权，把具有最高的抢先权值的进程记录在target_task中，该进程运行的cpu为最合适的CPU。</li>
+  <li>如target_task为空，说明没有找到合适的cpu，直接返回。</li>
+  <li>如果target_task不为空，则说明找到了合适的cpu，因此将target_task-&gt;need_resched置为1，如果运行target_task的cpu不是当前运行的cpu，则向运行target_task的cpu发送一个IPI中断，让它重新调度。</li>
+</ol>
+
+<h1 id="memory-management---addressing">Memory Management - Addressing</h1>
+<h2 id="memory-addresses">Memory Addresses</h2>
+<ul>
+  <li>three kinds of addresses in 80x86 microprocessors
+    <ul>
+      <li>logical address: included in the machine language instructions</li>
+      <li>linear address (virtual address): a single 32-bit unsigned integer that can be used to address up to 4GB</li>
+      <li>physical address (32-bit unsigned integers): used to address memory cells in memory chips</li>
+      <li>logical address =&gt; <strong>segmentation unit</strong> =&gt; linear address =&gt; <strong>paging unit</strong> =&gt; physical address</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="virtual-file-system-vfs">Virtual File System (VFS)</h2>
+
+<h2 id="role-of-vfs">Role of VFS</h2>
+<ul>
+  <li>a common interface to several kinds of file systems</li>
+  <li>File systems supported by the VFS
+    <ul>
+      <li>Disk-based filesystems</li>
+      <li>Network filesystems</li>
+      <li>special filesystems (e.g. /proc)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="common-file-system-interface">Common file system interface</h2>
+<ul>
+  <li>enable system calls such as <code class="language-plaintext highlighter-rouge">open()</code>, <code class="language-plaintext highlighter-rouge">read()</code> and <code class="language-plaintext highlighter-rouge">write()</code> to work regardless of file system or storage media</li>
+</ul>
+
+<h2 id="terminology">Terminology</h2>
+<ul>
+  <li>file system: storage of data adhering to a specific structure</li>
+  <li>file: ordered string of bytes</li>
+  <li>directory: analogous to a folder
+    <ul>
+      <li>special type of file</li>
+      <li>instead of normal data, it contains <strong>pointers</strong> to other files</li>
+      <li>directories are hooked together to create the hierarchical name space</li>
+    </ul>
+  </li>
+  <li>metadata: information describing a file</li>
+</ul>
+
+<h2 id="physical-file-representation">Physical file representation</h2>
+<ul>
+  <li>Inode:
+    <ul>
+      <li>unique index</li>
+      <li>holds file attributes and data block locations pertaining to a file</li>
+    </ul>
+  </li>
+  <li>Data blocks
+    <ul>
+      <li>contain file data</li>
+      <li>may not be physically contiguous</li>
+    </ul>
+  </li>
+  <li>File name:
+    <ul>
+      <li>human-readable identifier for each file</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="the-common-file-model">The common file model</h2>
+<ul>
+  <li>defines common file model conceptual interfaces and data structures</li>
+  <li>e.g. user space (<code class="language-plaintext highlighter-rouge">write()</code>) =&gt; VFS (<code class="language-plaintext highlighter-rouge">sys_write()</code>) =&gt; file system (<code class="language-plaintext highlighter-rouge">file system write methods</code>) =&gt; physical media</li>
+  <li>object-oriented: data structures and associated operations
+    <ul>
+      <li>Superblock object: a mounted file system</li>
+      <li>Inode object: information about a file, represents a specific file</li>
+      <li>File object: interaction between an open file and a process</li>
+      <li>Dentry object: directory entry, single component of a path name</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="vfs-operations">VFS operations</h2>
+<ul>
+  <li>each object contains operations object with methods:
+    <ul>
+      <li>super_operations: invoked on a specific file system</li>
+      <li>inode_operations: invoked on a specific inodes (which point to a file)</li>
+      <li>dentry_operations: invoked on a specific directory entry</li>
+      <li>file_operations: invoked on a file</li>
+    </ul>
+  </li>
+  <li>lower file system can implement own version of methods to be called by VFS</li>
+  <li>if an operation is not defined by a lower file system (NULL), VFS will often call a generic version of the method</li>
+</ul>
+
+<h2 id="vfs-data-structures">VFS Data Structures</h2>
+
+<h2 id="superblock-object">Superblock object</h2>
+<ul>
+  <li>implemented by each file system</li>
+  <li>used to store information describing that specific file system</li>
+  <li>often physically written at the beginning of the partition (file system control block)</li>
+  <li>found in <code class="language-plaintext highlighter-rouge">linux/fs.h</code></li>
+</ul>
+
+<h2 id="inode-object">Inode object</h2>
+<ul>
+  <li>represent all the information needed to manipulate a file or directory</li>
+  <li>constructed in memory, regardless of how file system stores metadata information</li>
+  <li>three doubly linked lists
+    <ul>
+      <li>List of valid unused inodes</li>
+      <li>List of in-use inodes</li>
+      <li>List of dirty inodes</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="power-management---from-linux-kernel-to-android">Power Management - From Linux Kernel to Android</h1>
+
+<h2 id="linux-power-management">Linux Power Management</h2>
+<ul>
+  <li>Two popular power management standards in Linux
+    <ul>
+      <li>APM (Advanced Power Management)
+        <ul>
+          <li>Power management happens in two ways:
+            <ol>
+              <li>function calls from APM driver to the BIOS requesting power state change</li>
+              <li>automatically based on device activities</li>
+            </ol>
+          </li>
+          <li>Power states in APM:
+            <ol>
+              <li>Full on</li>
+              <li>APM enabled</li>
+              <li>APM standby</li>
+              <li>APM suspend</li>
+              <li>Sleep/Hibernation</li>
+              <li>Off</li>
+            </ol>
+          </li>
+          <li>Weakness of APM:
+            <ol>
+              <li>each BIOS has its own policy, different computers have different activities</li>
+              <li>unable to know why system is suspend</li>
+              <li>BIOS does not know user activities</li>
+              <li>does not know add-on devices (USB)</li>
+            </ol>
+          </li>
+        </ul>
+      </li>
+      <li>ACPI (Advanced Configuration and Power Interface)
+        <ul>
+          <li>control divided between OS and BIOS, decisions managed through OS</li>
+          <li>Enables sophisticated power policies for general-purpose computers with standard usage patterns and hardware</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="android-power-management">Android Power Management</h2>
+<ul>
+  <li>Built on top of Linux Power Management</li>
+  <li>Designed for devices which have a “default-off” behaviors
+    <ul>
+      <li>the phone is not supposed to be on when we do not want to use it</li>
+      <li>powered on only when requested to be run, off by default</li>
+      <li>unlike PC, which has a “default-on” behavior</li>
+    </ul>
+  </li>
+  <li>Apps and services must request CPU resource with
+<strong>“wake locks”</strong> through the Android application
+framework (<code class="language-plaintext highlighter-rouge">PowerManager</code> class) and native Linux libraries in order to keep
+power on, otherwise Android will shut down the CPU</li>
+  <li>Android PM uses <strong>wake locks</strong> and <strong>time out</strong>
+mechanism to switch state of system power, so that
+system power consumption decreases</li>
+  <li>If there are no wake locks, CPU will be turned off</li>
+  <li>If there are <strong>partial wake locks</strong>, screen and keyboard will be turned off</li>
+</ul>
+
+<h2 id="android-pm-state-machine">Android PM State Machine</h2>
+<ul>
+  <li>When an user application acquire <strong>full wake lock</strong>
+or <strong>screen/keyboard touch activity</strong> event occur,
+the machine will enter ‘AWAKE’ state</li>
+  <li>If timeout happens or power key is pressed, the machine will enter
+<strong>“notification”</strong> state:
+    <ul>
+      <li>if partial wake lock is acquired, the machine will remain
+  “notification”</li>
+      <li>if all partial wake locks are released, the machine will
+  enter <strong>“sleep”</strong> state
+  <img src="https://lantaoyu.github.io/files/linux-figures/pm.png" alt="" /></li>
+    </ul>
+  </li>
+  <li>There is one main wake lock called ‘main’ in the kernel
+to keep the kernel awake
+    <ul>
+      <li>It is the last wake lock to be released when system goes to suspend
+        <h2 id="acquiring-wake-locks">Acquiring wake locks</h2>
+        <p><img src="https://lantaoyu.github.io/files/linux-figures/wake_lock.png" alt="" /></p>
+        <ol>
+          <li>request sent to PowerManager to acquire a wake lock</li>
+          <li>PowerManagementService (in the kernel) to take a wake lock</li>
+          <li>Add wake lock to the list</li>
+          <li>set the power state:</li>
+        </ol>
+      </li>
+      <li>for a full wake lock, state should be set to “ON”
+        <ol>
+          <li>For taking Partial wake lock, if it is the first partial
+wake lock, a kernel wake lock is taken. This will
+protect all the partial wake locks. For subsequent
+requests, kernel wake lock is not taken, but just
+added to the list</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="system-sleep">System Sleep</h2>
+<p><img src="https://lantaoyu.github.io/files/linux-figures/sleep.png" alt="" /></p>
+<ul>
+  <li>early_suspend:
+    <ul>
+      <li>Used by drivers that need to handle power mode settings
+  to the device before kernel is suspended</li>
+      <li>Used to turn off screen and non-wakeup source input
+  devices</li>
+      <li>E.g., consider a display driver
+        <ul>
+          <li>In early suspend, the screen can be turned off</li>
+          <li>In the suspend, other things like closing the driver can be done</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>late_resume:
+    <ul>
+      <li>When system is resumed, resume is called first, followed by resume late</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="battery-service">Battery Service</h2>
+<ul>
+  <li>The <strong>BatteryService</strong> monitors the battery status, level, temperature etc.</li>
+  <li>A <strong>Battery Driver</strong> in the kernel interacts with the physical battery via ADC to read battery voltage and I2C</li>
+  <li>Whenever BatteryService receives information
+from the BatteryDriver, it will act accordingly
+    <ul>
+      <li>E.g. if battery level is low, it will ask system to shutdown</li>
+    </ul>
+  </li>
+  <li>Battery Service will monitor the battery status based on received uevent from the kernel
+    <ul>
+      <li>uevent : An asynchronous communication channel for kernel</li>
+    </ul>
+  </li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+
+
+      </footer>
+
+      
+
+<section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/posts/2017/06/linux-kernels/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/posts/2017/06/linux-kernels/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=http://localhost:4000/posts/2017/06/linux-kernels/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/posts/2017/06/linux-kernels/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      
+
+
+  <nav class="pagination">
+    
+      <a href="http://localhost:4000/marl-papers.md-Zone/" class="pagination--pager" title="Marl Papers.md:zone
+">Previous</a>
+    
+    
+      <a href="http://localhost:4000/linux.md-Zone/" class="pagination--pager" title="Linux.md:zone
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      
+        <h4 class="page__related-title">You May Also Enjoy</h4>
+      
+      <div class="grid__wrapper">
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/computer-networks.md-Zone/" rel="permalink">Computer Networks.md:zone
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  less than 1 minute read
+	
+</p>
+    
+    
+    <!-- 
+      <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2017-07-05T00:00:00-07:00">July 05, 2017</time></p>
+     -->
+
+    
+
+    <!-- 
+    <p class="archive__item-excerpt" itemprop="description"><p>[ZoneTransfer]
+ZoneId=3
+ReferrerUrl=C:\Users\bhatsg\Downloads\RASR-lab.github.io-master.zip</p>
+</p>
+     -->
+
+  </article>
+</div>
+
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/posts/2017/07/computer-networks/" rel="permalink">Notes for Computer Networks
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  32 minute read
+	
+</p>
+    
+    
+    <!-- 
+      <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2017-07-05T00:00:00-07:00">July 05, 2017</time></p>
+     -->
+
+    
+
+    <!-- 
+    <p class="archive__item-excerpt" itemprop="description"><h1 id="chapter-1">Chapter 1</h1>
+
+</p>
+     -->
+
+  </article>
+</div>
+
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/linux.md-Zone/" rel="permalink">Linux.md:zone
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  less than 1 minute read
+	
+</p>
+    
+    
+    <!-- 
+      <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2017-06-22T00:00:00-07:00">June 22, 2017</time></p>
+     -->
+
+    
+
+    <!-- 
+    <p class="archive__item-excerpt" itemprop="description"><p>[ZoneTransfer]
+ZoneId=3
+ReferrerUrl=C:\Users\bhatsg\Downloads\RASR-lab.github.io-master.zip</p>
+</p>
+     -->
+
+  </article>
+</div>
+
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/marl-papers.md-Zone/" rel="permalink">Marl Papers.md:zone
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  less than 1 minute read
+	
+</p>
+    
+    
+    <!-- 
+      <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2017-06-05T00:00:00-07:00">June 05, 2017</time></p>
+     -->
+
+    
+
+    <!-- 
+    <p class="archive__item-excerpt" itemprop="description"><p>[ZoneTransfer]
+ZoneId=3
+ReferrerUrl=C:\Users\bhatsg\Downloads\RASR-lab.github.io-master.zip</p>
+</p>
+     -->
+
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+    </script>
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+<!--<a href="/sitemap/">Sitemap</a>-->
+<!-- end custom footer snippets -->
+
+        
+
+
+<div class="page__footer-copyright">&copy; 2026 RASR Lab. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/academicpages/academicpages.github.io">AcademicPages</a>.</div>
+
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+  </body>
+</html>
+

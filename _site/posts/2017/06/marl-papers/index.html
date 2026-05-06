@@ -1,0 +1,691 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+<meta charset="utf-8">
+
+
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Multi-Agent Reinforcement Learning Paper Lists - RASR Lab</title>
+
+
+
+
+
+
+
+<meta property="og:locale" content="en-US">
+<meta property="og:site_name" content="RASR Lab">
+<meta property="og:title" content="Multi-Agent Reinforcement Learning Paper Lists">
+
+
+  <link rel="canonical" href="http://localhost:4000/posts/2017/06/marl-papers/">
+  <meta property="og:url" content="http://localhost:4000/posts/2017/06/marl-papers/">
+
+
+
+  <meta property="og:description" content="Multi-Agent Reinforcement Learning (MARL) is a very interesting research area, which has strong connections with single-agent RL, multi-agent systems, game theory, evolutionary computation and optimization theory.">
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2017-06-05T00:00:00-07:00">
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "RASR Lab",
+      "url" : "http://localhost:4000",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="RASR Lab Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+    
+
+<!-- start custom head snippets -->
+
+<link rel="stylesheet" href="http://localhost:4000/assets/css/academicons.min.css"/>
+<link rel="apple-touch-icon" sizes="57x57" href="http://localhost:4000/images/apple-touch-icon-57x57.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="60x60" href="http://localhost:4000/images/apple-touch-icon-60x60.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="76x76" href="http://localhost:4000/images/apple-touch-icon-76x76.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="120x120" href="http://localhost:4000/images/apple-touch-icon-120x120.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="152x152" href="http://localhost:4000/images/apple-touch-icon-152x152.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="180x180" href="http://localhost:4000/images/apple-touch-icon-180x180.png?v=M44lzPylqQ">
+<link rel="icon" type="image/png" href="http://localhost:4000/images/favicon-32x32.png?v=M44lzPylqQ" sizes="32x32">
+<link rel="icon" type="image/png" href="http://localhost:4000/images/android-chrome-192x192.png?v=M44lzPylqQ" sizes="192x192">
+<link rel="icon" type="image/png" href="http://localhost:4000/images/favicon-96x96.png?v=M44lzPylqQ" sizes="96x96">
+<link rel="icon" type="image/png" href="http://localhost:4000/images/favicon-16x16.png?v=M44lzPylqQ" sizes="16x16">
+<link rel="manifest" href="http://localhost:4000/images/manifest.json?v=M44lzPylqQ">
+<link rel="mask-icon" href="http://localhost:4000/images/safari-pinned-tab.svg?v=M44lzPylqQ" color="#000000">
+<link rel="shortcut icon" href="/images/favicon.ico?v=M44lzPylqQ">
+<meta name="msapplication-TileColor" content="#000000">
+<meta name="msapplication-TileImage" content="http://localhost:4000/images/mstile-144x144.png?v=M44lzPylqQ">
+<meta name="msapplication-config" content="http://localhost:4000/images/browserconfig.xml?v=M44lzPylqQ">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000/">RASR Lab</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/team/">The Team</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/publications/">Publications</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/presentations/">Presentations</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/teaching/">Education</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/contact/">Contact</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+
+
+
+<div id="main" role="main">
+  
+
+
+  <div class="sidebar sticky">
+  
+
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  <div class="author__avatar">
+    
+    	<img src="http://localhost:4000/images/RASR_Lab_logo.png" class="author__avatar" alt="RASR Lab">
+    
+  </div>
+
+  <div class="author__content">
+    <h3 class="author__name">RASR Lab</h3>
+    <p class="author__bio">Robotics for Assistive Systems and Rehabilitation Lab<br> <br> Physics & Astronomy Department,<br> University of Wisconsin - Eau Claire</p>
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li><i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> Eau Claire, WI, USA</li>
+      
+      
+      
+      
+        <li><a href="mailto:bhatsg@uwec.edu"><i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Multi-Agent Reinforcement Learning Paper Lists">
+    <meta itemprop="description" content="Multi-Agent Reinforcement Learning (MARL) is a very interesting research area, which has strong connections with single-agent RL, multi-agent systems, game theory, evolutionary computation and optimization theory.">
+    <meta itemprop="datePublished" content="June 05, 2017">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Multi-Agent Reinforcement Learning Paper Lists
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  10 minute read
+	
+</p>
+          
+        
+        
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2017-06-05T00:00:00-07:00">June 05, 2017</time></p>
+        
+        
+             
+        
+    
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>Multi-Agent Reinforcement Learning (MARL) is a very interesting research area, which has strong connections with single-agent RL, multi-agent systems, game theory, evolutionary computation and optimization theory.</p>
+
+<p>This is a collection of research and review papers of multi-agent reinforcement learning (MARL). The Papers are sorted by time. Any suggestions and pull requests are welcome.</p>
+
+<p>The sharing principle of these references here is for research. If any authors do not want their paper to be listed here, please feel free to contact <a href="https://lantaoyu.github.io/">Lantao Yu</a> (Email: lantaoyu [AT] hotmail.com).</p>
+
+<h2 id="tutorial-and-books">Tutorial and Books</h2>
+<ul>
+  <li><a href="http://www.ecmlpkdd2013.org/wp-content/uploads/2013/09/Multiagent-Reinforcement-Learning.pdf">Multiagent Reinforcement Learning</a> by Daan Bloembergen, Daniel Hennes, Michael Kaisers, Peter Vrancx. ECML, 2013.</li>
+  <li><a href="http://www.masfoundations.org/download.html">Multiagent systems: Algorithmic, game-theoretic, and logical foundations</a> by Shoham Y, Leyton-Brown K. Cambridge University Press, 2008.</li>
+</ul>
+
+<h2 id="review-papers">Review Papers</h2>
+<ul>
+  <li><a href="https://project-archive.inf.ed.ac.uk/msc/20162091/msc_proj.pdf">Deep Reinforcement Learning Variants of Multi-Agent Learning Algorithms</a> by Castaneda A O. 2016.</li>
+  <li><a href="https://jair.org/media/4818/live-4818-8818-jair.pdf">Evolutionary Dynamics of Multi-Agent Learning: A Survey</a> by Bloembergen, Daan, et al. JAIR, 2015.</li>
+  <li><a href="https://www.researchgate.net/publication/269100101_Game_Theory_and_Multi-agent_Reinforcement_Learning">Game theory and multi-agent reinforcement learning</a> by Nowé A, Vrancx P, De Hauwere Y M. Reinforcement Learning. Springer Berlin Heidelberg, 2012.</li>
+  <li><a href="http://www.dcsc.tudelft.nl/~bdeschutter/pub/rep/10_003.pdf">Multi-agent reinforcement learning: An overview</a> by Buşoniu L, Babuška R, De Schutter B. Innovations in multi-agent systems and applications-1. Springer Berlin Heidelberg, 2010</li>
+  <li><a href="http://www.dcsc.tudelft.nl/~bdeschutter/pub/rep/07_019.pdf">A comprehensive survey of multi-agent reinforcement learning</a> by Busoniu L, Babuska R, De Schutter B. IEEE Transactions on Systems Man and Cybernetics Part C Applications and Reviews, 2008</li>
+  <li><a href="http://robotics.stanford.edu/~shoham/www%20papers/LearningInMAS.pdf">If multi-agent learning is the answer, what is the question?</a> by Shoham Y, Powers R, Grenager T. Artificial Intelligence, 2007.</li>
+  <li><a href="http://users.isr.ist.utl.pt/~mtjspaan/readingGroup/learningNeto05.pdf">From single-agent to multi-agent reinforcement learning: Foundational concepts and methods</a> by Neto G. Learning theory course, 2005.</li>
+  <li><a href="https://pdfs.semanticscholar.org/bb9f/bee22eae2b47bbf304804a6ac07def1aecdb.pdf">Evolutionary game theory and multi-agent reinforcement learning</a> by Tuyls K, Nowé A. The Knowledge Engineering Review, 2005.</li>
+  <li><a href="https://www.researchgate.net/publication/221622801_An_Overview_of_Cooperative_and_Competitive_Multiagent_Learning">An Overview of Cooperative and Competitive Multiagent Learning</a> by Pieter Jan ’t HoenKarl TuylsLiviu PanaitSean LukeJ. A. La Poutré. AAMAS’s workshop LAMAS, 2005.</li>
+</ul>
+
+<h2 id="research-papers">Research Papers</h2>
+
+<h3 id="framework">Framework</h3>
+<ul>
+  <li><a href="https://arxiv.org/pdf/1706.02275.pdf">Multi-Agent Actor-Critic for Mixed Cooperative-Competitive Environments</a> by Lowe R, Wu Y, Tamar A, et al. arXiv, 2017.</li>
+  <li><a href="https://arxiv.org/pdf/1703.06182.pdf">Deep Decentralized Multi-task Multi-Agent RL under Partial Observability</a> by Omidshafiei S, Pazis J, Amato C, et al. arXiv, 2017.</li>
+  <li><a href="https://arxiv.org/pdf/1703.10069.pdf">Multiagent Bidirectionally-Coordinated Nets for Learning to Play StarCraft Combat Games</a> by Peng P, Yuan Q, Wen Y, et al. arXiv, 2017.</li>
+  <li><a href="https://arxiv.org/pdf/1703.02702.pdf">Robust Adversarial Reinforcement Learning</a> by Lerrel Pinto, James Davidson, Rahul Sukthankar, Abhinav Gupta. arXiv, 2017.</li>
+  <li><a href="https://arxiv.org/pdf/1702.08887.pdf">Stabilising Experience Replay for Deep Multi-Agent Reinforcement Learning</a> by Foerster J, Nardelli N, Farquhar G, et al. arXiv, 2017.</li>
+  <li><a href="https://arxiv.org/pdf/1508.05328.pdf">Multiagent reinforcement learning with sparse interactions by negotiation and knowledge transfer</a> by Zhou L, Yang P, Chen C, et al. IEEE transactions on cybernetics, 2016.</li>
+  <li><a href="https://arxiv.org/pdf/1409.4561.pdf">Decentralised multi-agent reinforcement learning for dynamic and uncertain environments</a> by Marinescu A, Dusparic I, Taylor A, et al. arXiv, 2014.</li>
+  <li><a href="http://irll.eecs.wsu.edu/wp-content/papercite-data/pdf/2014iat-holmesparker.pdf">CLEANing the reward: counterfactual actions to remove exploratory action noise in multiagent learning</a> by HolmesParker C, Taylor M E, Agogino A, et al. AAMAS, 2014.</li>
+  <li><a href="http://www.fransoliehoek.net/docs/Amato13MSDM.pdf">Bayesian reinforcement learning for multiagent systems with state uncertainty</a> by Amato C, Oliehoek F A. MSDM Workshop, 2013.</li>
+  <li><a href="http://www.weiss-gerhard.info/publications/AI_MAGAZINE_2012_TuylsWeiss.pdf">Multiagent learning: Basics, challenges, and prospects</a> by Tuyls, Karl, and Gerhard Weiss. AI Magazine, 2012.</li>
+  <li><a href="http://icml2010.haifa.il.ibm.com/papers/191.pdf">Classes of multiagent q-learning dynamics with epsilon-greedy exploration</a> by Wunder M, Littman M L, Babes M. ICML, 2010.</li>
+  <li><a href="http://www.machinelearning.org/proceedings/icml2007/papers/89.pdf">Conditional random fields for multi-agent reinforcement learning</a> by Zhang X, Aberdeen D, Vishwanathan S V N. ICML, 2007.</li>
+  <li><a href="http://ama.imag.fr/~partalas/partalasmarl.pdf">Multi-agent reinforcement learning using strategies and voting</a> by Partalas, Ioannis, Ioannis Feneris, and Ioannis Vlahavas. ICTAI, 2007.</li>
+  <li><a href="https://pdfs.semanticscholar.org/57fb/ae00e17c0d798559ebab0e8f4267e032f41d.pdf">A reinforcement learning scheme for a partially-observable multi-agent game</a> by Ishii S, Fujita H, Mitsutake M, et al. Machine Learning, 2005.</li>
+  <li><a href="http://lib.tkk.fi/Diss/2004/isbn9512273594/article1.pdf">Asymmetric multiagent reinforcement learning</a> by Könönen V. Web Intelligence and Agent Systems, 2004.</li>
+  <li><a href="http://dl.acm.org/citation.cfm?id=860686">Adaptive policy gradient in multiagent learning</a> by Banerjee B, Peng J. AAMAS, 2003.</li>
+  <li><a href="https://papers.nips.cc/paper/2171-reinforcement-learning-to-play-an-optimal-nash-equilibrium-in-team-markov-games.pdf">Reinforcement learning to play an optimal Nash equilibrium in team Markov games</a> by Wang X, Sandholm T. NIPS, 2002.</li>
+  <li><a href="http://www.sts.rpi.edu/~rsun/si-mal/article3.pdf">Value-function reinforcement learning in Markov game</a> by Littman M L. Cognitive Systems Research, 2001.</li>
+  <li><a href="http://researchers.lille.inria.fr/~ghavamza/my_website/Publications_files/agents01.pdf">Hierarchical multi-agent reinforcement learning</a> by Makar, Rajbala, Sridhar Mahadevan, and Mohammad Ghavamzadeh. The fifth international conference on Autonomous agents, 2001.</li>
+</ul>
+
+<h3 id="joint-action-learning">Joint action learning</h3>
+<ul>
+  <li><a href="http://www.cs.cmu.edu/~conitzer/awesomeML06.pdf">AWESOME: A general multiagent learning algorithm that converges in self-play and learns a best response against stationary opponents</a> by Conitzer V, Sandholm T. Machine Learning, 2007.</li>
+  <li><a href="https://papers.nips.cc/paper/2503-extending-q-learning-to-general-adaptive-multi-agent-systems.pdf">Extending Q-Learning to General Adaptive Multi-Agent Systems</a> by Tesauro, Gerald. NIPS, 2003.</li>
+  <li><a href="http://www.lirmm.fr/~jq/Cours/3cycle/module/HuWellman98icml.pdf">Multiagent reinforcement learning: theoretical framework and an algorithm.</a> by Hu, Junling, and Michael P. Wellman. ICML, 1998.</li>
+  <li><a href="http://www.aaai.org/Papers/AAAI/1998/AAAI98-106.pdf">The dynamics of reinforcement learning in cooperative multiagent systems</a> by Claus C, Boutilier C. AAAI, 1998.</li>
+  <li><a href="https://www.cs.duke.edu/courses/spring07/cps296.3/littman94markov.pdf">Markov games as a framework for multi-agent reinforcement learning</a> by Littman, Michael L. ICML, 1994.</li>
+</ul>
+
+<h3 id="cooperation-and-competition">Cooperation and competition</h3>
+<ul>
+  <li><a href="https://arxiv.org/pdf/1702.03037.pdf">Multi-agent Reinforcement Learning in Sequential Social Dilemmas</a> by Leibo J Z, Zambaldi V, Lanctot M, et al. arXiv, 2017. [<a href="https://deepmind.com/blog/understanding-agent-cooperation/">Post</a>]</li>
+  <li><a href="http://www.umiacs.umd.edu/~hal/docs/daume16opponent.pdf">Opponent Modeling in Deep Reinforcement Learning</a> by He H, Boyd-Graber J, Kwok K, et al. ICML, 2016.</li>
+  <li><a href="https://arxiv.org/pdf/1511.08779.pdf">Multiagent cooperation and competition with deep reinforcement learning</a> by Tampuu A, Matiisen T, Kodelja D, et al. arXiv, 2015.</li>
+  <li><a href="http://www.uow.edu.au/~fren/documents/EMR_2013.pdf">Emotional multiagent reinforcement learning in social dilemmas</a> by Yu C, Zhang M, Ren F. International Conference on Principles and Practice of Multi-Agent Systems, 2013.</li>
+  <li><a href="http://www.jmlr.org/papers/volume9/bab08a/bab08a.pdf">Multi-agent reinforcement learning in common interest and fixed sum stochastic games: An experimental study</a> by Bab, Avraham, and Ronen I. Brafman. Journal of Machine Learning Research, 2008.</li>
+  <li><a href="https://pdfs.semanticscholar.org/5120/d9f2c738ad223e9f8f14cb3fd5612239a35c.pdf">Combining policy search with planning in multi-agent cooperation</a> by Ma J, Cameron S. Robot Soccer World Cup, 2008.</li>
+  <li><a href="http://www.jmlr.org/papers/volume7/kok06a/kok06a.pdf">Collaborative multiagent reinforcement learning by payoff propagation</a> by Kok J R, Vlassis N. JMLR, 2006.</li>
+  <li><a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.107.335&amp;rep=rep1&amp;type=pdf">Learning to cooperate in multi-agent social dilemmas</a> by de Cote E M, Lazaric A, Restelli M. AAMAS, 2006.</li>
+  <li><a href="http://www.machinelearning.org/proceedings/icml2005/papers/021_Learning_CrandallGoodrich.pdf">Learning to compete, compromise, and cooperate in repeated general-sum games</a> by Crandall J W, Goodrich M A. ICML, 2005.</li>
+  <li><a href="http://www.machinelearning.org/proceedings/icml2004/papers/267.pdf">Sparse cooperative Q-learning</a> by Kok J R, Vlassis N. ICML, 2004.</li>
+</ul>
+
+<h3 id="coordination">Coordination</h3>
+<ul>
+  <li><a href="https://arxiv.org/pdf/1703.03121.pdf">Coordinated Multi-Agent Imitation Learning</a> by Le H M, Yue Y, Carr P. arXiv, 2017.</li>
+  <li><a href="http://mipc.inf.ed.ac.uk/2014/papers/mipc2014_hao_etal.pdf">Reinforcement social learning of coordination in networked cooperative multiagent systems</a> by Hao J, Huang D, Cai Y, et al. AAAI Workshop, 2014.</li>
+  <li><a href="http://www.aamas-conference.org/Proceedings/aamas2013/docs/p1101.pdf">Coordinating multi-agent reinforcement learning with limited communication</a> by Zhang, Chongjie, and Victor Lesser. AAMAS, 2013.</li>
+  <li><a href="http://www.ifaamas.org/Proceedings/aamas2012/papers/1B_1.pdf">Coordination guided reinforcement learning</a> by Lau Q P, Lee M L, Hsu W. AAMAS, 2012.</li>
+  <li><a href="https://www.cs.toronto.edu/~cebly/Papers/bayesMARL.pdf">Coordination in multiagent reinforcement learning: a Bayesian approach</a> by Chalkiadakis G, Boutilier C. AAMAS, 2003.</li>
+  <li><a href="https://users.cs.duke.edu/~parr/icml02.pdf">Coordinated reinforcement learning</a> by Guestrin C, Lagoudakis M, Parr R. ICML, 2002.</li>
+  <li><a href="http://www.aaai.org/Papers/AAAI/2002/AAAI02-050.pdf">Reinforcement learning of coordination in cooperative multi-agent systems</a> by Kapetanakis S, Kudenko D. AAAI/IAAI, 2002.</li>
+</ul>
+
+<h3 id="security">Security</h3>
+<ul>
+  <li><a href="http://www.fransoliehoek.net/docs/Klima16LICMAS.pdf">Markov Security Games: Learning in Spatial Security Problems</a> by Klima R, Tuyls K, Oliehoek F. The Learning, Inference and Control of Multi-Agent Systems at NIPS, 2016.</li>
+  <li><a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7244682">Cooperative Capture by Multi-Agent using Reinforcement Learning, Application for Security Patrol Systems</a> by Yasuyuki S, Hirofumi O, Tadashi M, et al. Control Conference (ASCC), 2015</li>
+  <li><a href="http://www4.ncsu.edu/~hdai/infocom-2015-XH.pdf">Improving learning and adaptation in security games by exploiting information asymmetry</a> by He X, Dai H, Ning P. INFOCOM, 2015.</li>
+</ul>
+
+<h3 id="self-play">Self-Play</h3>
+<ul>
+  <li><a href="https://arxiv.org/pdf/1603.01121.pdf">Deep reinforcement learning from self-play in imperfect-information games</a> by Heinrich, Johannes, and David Silver. arXiv, 2016.</li>
+  <li><a href="http://jmlr.org/proceedings/papers/v37/heinrich15.pdf">Fictitious Self-Play in Extensive-Form Games</a> by Heinrich, Johannes, Marc Lanctot, and David Silver. ICML, 2015.</li>
+</ul>
+
+<h3 id="learning-to-communicate">Learning To Communicate</h3>
+<ul>
+  <li><a href="https://openreview.net/pdf?id=SkaxnKEYg">EMERGENCE OF LANGUAGE WITH MULTI-AGENT GAMES: LEARNING TO COMMUNICATE WITH SEQUENCES OF SYMBOLS</a> by Serhii Havrylov, Ivan Titov. ICLR Workshop, 2017.</li>
+  <li><a href="https://arxiv.org/pdf/1703.06585.pdf">Learning Cooperative Visual Dialog Agents with Deep Reinforcement Learning</a> by Abhishek Das, Satwik Kottur, et al. arXiv, 2017.</li>
+  <li><a href="https://arxiv.org/pdf/1703.04908.pdf">Emergence of Grounded Compositional Language in Multi-Agent Populations</a> by Igor Mordatch, Pieter Abbeel. arXiv, 2017. [<a href="https://openai.com/blog/learning-to-communicate/">Post</a>]</li>
+  <li><a href="https://repositories.lib.utexas.edu/handle/2152/45681">Cooperation and communication in multiagent deep reinforcement learning</a> by Hausknecht M J. 2017.</li>
+  <li><a href="https://openreview.net/pdf?id=Hk8N3Sclg">Multi-agent cooperation and the emergence of (natural) language</a> by Lazaridou A, Peysakhovich A, Baroni M. arXiv, 2016.</li>
+  <li><a href="https://arxiv.org/pdf/1602.02672.pdf">Learning to communicate to solve riddles with deep distributed recurrent q-networks</a> by Foerster J N, Assael Y M, de Freitas N, et al. arXiv, 2016.</li>
+  <li><a href="https://arxiv.org/pdf/1605.06676.pdf">Learning to communicate with deep multi-agent reinforcement learning</a> by Foerster J, Assael Y M, de Freitas N, et al. NIPS, 2016.</li>
+  <li><a href="http://papers.nips.cc/paper/6398-learning-multiagent-communication-with-backpropagation.pdf">Learning multiagent communication with backpropagation</a> by Sukhbaatar S, Fergus R. NIPS, 2016.</li>
+  <li><a href="http://people.csail.mit.edu/lpk/papers/dars08.pdf">Efficient distributed reinforcement learning through agreement</a> by Varshavskaya P, Kaelbling L P, Rus D. Distributed Autonomous Robotic Systems, 2009.</li>
+</ul>
+
+<h3 id="transfer-learning">Transfer Learning</h3>
+<ul>
+  <li><a href="https://www.ijcai.org/Proceedings/16/Papers/565.pdf">Transfer Learning for Multiagent Reinforcement Learning Systems</a> by da Silva, Felipe Leno, and Anna Helena Reali Costa. IJCAI, 2016.</li>
+  <li><a href="https://web.cs.umass.edu/publication/docs/2015/UM-CS-2015-004.pdf">Accelerating multi-agent reinforcement learning with dynamic co-learning</a> by Garant D, da Silva B C, Lesser V, et al. Technical report, 2015</li>
+  <li><a href="https://www.scss.tcd.ie/~tayloral/res/papers/Taylor_ParallelTransferLearning_ICML_2013.pdf">Transfer learning in multi-agent systems through parallel transfer</a> by Taylor, Adam, et al. ICML, 2013.</li>
+  <li><a href="https://ewrl.files.wordpress.com/2011/08/ewrl2011_submission_19.pdf">Transfer learning in multi-agent reinforcement learning domains</a> by Boutsioukis, Georgios, Ioannis Partalas, and Ioannis Vlahavas. European Workshop on Reinforcement Learning, 2011.</li>
+  <li><a href="https://ai.vub.ac.be/~ydehauwe/publications/ICAART2011_2.pdf">Transfer Learning for Multi-agent Coordination</a> by Vrancx, Peter, Yann-Michaël De Hauwere, and Ann Nowé. ICAART, 2011.</li>
+</ul>
+
+<h3 id="inverse-reinforcement-learning">Inverse Reinforcement Learning</h3>
+<ul>
+  <li><a href="http://papers.nips.cc/paper/6420-cooperative-inverse-reinforcement-learning.pdf">Cooperative inverse reinforcement learning</a> by Hadfield-Menell D, Russell S J, Abbeel P, et al. NIPS, 2016.</li>
+  <li><a href="https://arxiv.org/pdf/1403.6822.pdf">Comparison of Multi-agent and Single-agent Inverse Learning on a Simulated Soccer Example</a> by Lin X, Beling P A, Cogill R. arXiv, 2014.</li>
+  <li><a href="https://arxiv.org/pdf/1403.6508.pdf">Multi-agent inverse reinforcement learning for zero-sum games</a> by Lin X, Beling P A, Cogill R. arXiv, 2014.</li>
+  <li><a href="http://aamas2014.lip6.fr/proceedings/aamas/p173.pdf">Multi-robot inverse reinforcement learning under occlusion with interactions</a> by Bogert K, Doshi P. AAMAS, 2014.</li>
+  <li><a href="http://homes.soic.indiana.edu/natarasr/Papers/mairl.pdf">Multi-agent inverse reinforcement learning</a> by Natarajan S, Kunapuli G, Judah K, et al. ICMLA, 2010.</li>
+</ul>
+
+<h3 id="application">Application</h3>
+<ul>
+  <li><a href="https://arxiv.org/pdf/1702.05573.pdf">Collaborative Deep Reinforcement Learning for Joint Object Search</a> by Kong X, Xin B, Wang Y, et al. arXiv, 2017.</li>
+  <li><a href="https://arxiv.org/pdf/1610.03295.pdf">Safe, Multi-Agent, Reinforcement Learning for Autonomous Driving</a> by Shalev-Shwartz S, Shammah S, Shashua A. arXiv, 2016.</li>
+  <li><a href="https://www.researchgate.net/profile/Karl_Mason/publication/299416955_Applying_Multi-Agent_Reinforcement_Learning_to_Watershed_Management/links/56f545b908ae95e8b6d1d3ff.pdf">Applying multi-agent reinforcement learning to watershed management</a> by Mason, Karl, et al. Proceedings of the Adaptive and Learning Agents workshop at AAMAS, 2016.</li>
+  <li><a href="http://www.aaai.org/ocs/index.php/AIIDE/AIIDE10/paper/viewFile/2112/2550">Crowd Simulation Via Multi-Agent Reinforcement Learning</a> by Torrey L. AAAI, 2010.</li>
+  <li><a href="https://pdfs.semanticscholar.org/61bc/b98b7ae3df894f4f72aba3d145bd48ca2cd5.pdf">Traffic light control by multiagent reinforcement learning systems</a> by Bakker, Bram, et al. Interactive Collaborative Information Systems, 2010.</li>
+  <li><a href="https://staff.science.uva.nl/s.a.whiteson/pubs/kuyerecml08.pdf">Multiagent reinforcement learning for urban traffic control using coordination graphs</a> by Kuyer, Lior, et al. oint European Conference on Machine Learning and Knowledge Discovery in Databases, 2008.</li>
+  <li><a href="https://www.researchgate.net/publication/221465347_A_Multi-agent_Q-learning_Framework_for_Optimizing_Stock_Trading_Systems">A multi-agent Q-learning framework for optimizing stock trading systems</a> by Lee J W, Jangmin O. DEXA, 2002.</li>
+  <li><a href="http://citeseerx.ist.psu.edu/viewdoc/download;jsessionid=422747CB9AF552CF1C4E455220E3F96F?doi=10.1.1.32.9887&amp;rep=rep1&amp;type=pdf">Multi-agent reinforcement learning for traffic light control</a> by Wiering, Marco. ICML. 2000.</li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+
+
+      </footer>
+
+      
+
+<section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/posts/2017/06/marl-papers/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/posts/2017/06/marl-papers/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=http://localhost:4000/posts/2017/06/marl-papers/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/posts/2017/06/marl-papers/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      
+
+
+  <nav class="pagination">
+    
+      <a href="#" class="pagination--pager disabled">Previous</a>
+    
+    
+      <a href="http://localhost:4000/marl-papers.md-Zone/" class="pagination--pager" title="Marl Papers.md:zone
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      
+        <h4 class="page__related-title">You May Also Enjoy</h4>
+      
+      <div class="grid__wrapper">
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/computer-networks.md-Zone/" rel="permalink">Computer Networks.md:zone
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  less than 1 minute read
+	
+</p>
+    
+    
+    <!-- 
+      <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2017-07-05T00:00:00-07:00">July 05, 2017</time></p>
+     -->
+
+    
+
+    <!-- 
+    <p class="archive__item-excerpt" itemprop="description"><p>[ZoneTransfer]
+ZoneId=3
+ReferrerUrl=C:\Users\bhatsg\Downloads\RASR-lab.github.io-master.zip</p>
+</p>
+     -->
+
+  </article>
+</div>
+
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/posts/2017/07/computer-networks/" rel="permalink">Notes for Computer Networks
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  32 minute read
+	
+</p>
+    
+    
+    <!-- 
+      <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2017-07-05T00:00:00-07:00">July 05, 2017</time></p>
+     -->
+
+    
+
+    <!-- 
+    <p class="archive__item-excerpt" itemprop="description"><h1 id="chapter-1">Chapter 1</h1>
+
+</p>
+     -->
+
+  </article>
+</div>
+
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/linux.md-Zone/" rel="permalink">Linux.md:zone
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  less than 1 minute read
+	
+</p>
+    
+    
+    <!-- 
+      <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2017-06-22T00:00:00-07:00">June 22, 2017</time></p>
+     -->
+
+    
+
+    <!-- 
+    <p class="archive__item-excerpt" itemprop="description"><p>[ZoneTransfer]
+ZoneId=3
+ReferrerUrl=C:\Users\bhatsg\Downloads\RASR-lab.github.io-master.zip</p>
+</p>
+     -->
+
+  </article>
+</div>
+
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/posts/2017/06/linux-kernels/" rel="permalink">Notes for Linux Kernel
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  44 minute read
+	
+</p>
+    
+    
+    <!-- 
+      <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2017-06-22T00:00:00-07:00">June 22, 2017</time></p>
+     -->
+
+    
+
+    <!-- 
+    <p class="archive__item-excerpt" itemprop="description"><h1 id="introduction">Introduction</h1>
+<h2 id="features">Features</h2>
+<ul>
+  <li>Preemptive multitasking</li>
+  <li>Virtual memory</li>
+  <li>Shared libraries</li>
+  <li>Demand loading, dynamic kernel modules</li>
+  <li>TCP/IP networking</li>
+  <li>Symmetrical Multi-Processing support</li>
+  <li>Open source</li>
+</ul>
+
+</p>
+     -->
+
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+    </script>
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+<!--<a href="/sitemap/">Sitemap</a>-->
+<!-- end custom footer snippets -->
+
+        
+
+
+<div class="page__footer-copyright">&copy; 2026 RASR Lab. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/academicpages/academicpages.github.io">AcademicPages</a>.</div>
+
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+  </body>
+</html>
+

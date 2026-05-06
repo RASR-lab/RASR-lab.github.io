@@ -28,8 +28,8 @@ Feel free to explore our work and collaborations...
 {% for item in news %}
   <div class="News-post">
     <li>
-      <h3>{{ item.headline }}</h3>
-      <p>{{ item.post }}</p>
+      <p><b>{{ item.headline }}</b> &nbsp;    {{ item.date }}<br>
+      {{ item.post }}</p>
     </li>
   </div>
 {% endfor %}

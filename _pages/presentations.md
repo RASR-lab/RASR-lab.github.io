@@ -9,18 +9,16 @@ author_profile: true
 updated: 5/4/2026
 
 # Intramural
-
 ## Poster
 <ol>
-{% assign intra.poster = site.data.presentations | where: "type", "Intramural Poster" %}
-{% for member in intra.poster %}
+{% assign intraposter = site.data.presentations | where: "type", "Intramural Poster" %}
+{% for member in intraposter %}
 	<div class="presentations">
 	    <li>
 	    	<h3>{{ member.title }}</h3>
-	    	<p>{{ member.date }}</p>
-	    	<p><b>Presenter:</b> {{ member.presenter }}</p>
-	    	<p><b>Conference:</b> {{ member.conference }}</p>
-	    	<p>{{ member.location}}</p>
+	    	<p><b>Presenter:</b> {{ member.presenter }}<br>
+	    	<b>Conference:</b> {{ member.conference }}<br>
+	    	{{ member.date }}; {{ member.location}}</p>
 	    </li>
 	</div>
 {% endfor %}
