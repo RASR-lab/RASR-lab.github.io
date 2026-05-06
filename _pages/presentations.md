@@ -15,7 +15,8 @@ updated: 5/4/2026
 {% assign intra.poster = site.data.presentations | where: "type", "Intramural Poster" %}
 {% for member in intra.poster %}
 	<div class="presentations">
-	    <li><h3>{{ member.title }}</h3>
+	    <li>
+	    	<h3>{{ member.title }}</h3>
 	    	<p>{{ member.date }}</p>
 	    	<p><b>Presenter:</b> {{ member.presenter }}</p>
 	    	<p><b>Conference:</b> {{ member.conference }}</p>
