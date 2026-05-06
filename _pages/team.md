@@ -14,18 +14,16 @@ Meet the researchers, engineers, and students driving innovation in assistive ro
 {% assign faculty = site.data.team | where: "role", "Faculty" %}
 {% for member in faculty %}
   <div class="team-member">
-  <table border="1" style="width: 100%; border-collapse: collapse;">
-    <thead>
+  <table>
       <tr>
         <th>
           <img src="{{ site.baseurl }}/images/{{ member.image }}" alt="{{ member.name }}" style="width: 300px">
         </th>
         <th>
-          <h3>{{ member.name }}</h3>
+          <p><b>{{ member.name }}</b></p>
           <p>{{ member.position}}</p>
         </th>
       </tr>
-    </thead>
   </div>
   <!-- <div class="team-member">
     <img src="{{ site.baseurl }}/images/{{ member.image }}" alt="{{ member.name }}" style="width: 300px">
