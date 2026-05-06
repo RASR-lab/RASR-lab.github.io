@@ -12,7 +12,7 @@ updated: 5/4/2026
 
 ## Poster
 <ol>
-{% assign intra.poster = site.data.presentations | where: "type", "Intramural_Poster" %}
+{% assign intra.poster = site.data.presentations | where: "type", "Intramural Poster" %}
 {% for member in intra.poster %}
     <li><h3>{{ member.title }}</h3>
     	<p>{{ member.date }}</p>

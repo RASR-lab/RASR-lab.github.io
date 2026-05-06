@@ -19,7 +19,7 @@ Greetings from the Robotics for Assistive Systems and Rehabilitation (RASR) Lab!
 The RASR lab is dedicated to undergraduate research in the field of upper extremity robotics for assistance during Activities of Daily Living (ADL) and rehabilitation post surgery/injury. The lab is led by Dr. Sandesh G. Bhat, who is an Assistant Professor in the Department of Physics and Astronomy. 
 
 Feel free to explore our work and collaborations...
-
+<br>
 
 # News
 <ol>
