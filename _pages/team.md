@@ -29,6 +29,7 @@ Meet the researchers, engineers, and students driving innovation in assistive ro
     <img src="{{ site.baseurl }}/images/{{ member.image }}" alt="{{ member.name }}" style="width: 300px">
     <h3>{{ member.name }}</h3>
     <p>{{ member.position}}</p>
+    <br>
   </div>
 {% endfor %}
 

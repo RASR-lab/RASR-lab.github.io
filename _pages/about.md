@@ -21,5 +21,14 @@ The RASR lab is dedicated to undergraduate research in the field of upper extrem
 Feel free to explore our work and collaborations...
 
 
-
+# News
+<ol>
+{% assign news = site.data.news %}
+{% for item in news %}
+  <div class="News-post">
+    <h3>{{ item.headline }}</h3>
+    <p>{{ item.post }}</p>
+  </div>
+{% endfor %}
+</ol>
 

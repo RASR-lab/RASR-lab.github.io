@@ -16,17 +16,17 @@ updated: 5/4/2026
 {% for member in intra.poster %}
   <div class="Presentations">
     <li><h3>{{ member.title }}</h3></li>
-    	<p>{{ member.date}}</p>
-    	<p>Presenter: {{ member.presenter}}</p>
-    	<p>Conference: {{ member.conference}}</p>
+    	<p>{{ member.date }}</p>
+    	<p><b>Presenter:</b> {{ member.presenter }}</p>
+    	<p><b>Conference:</b> {{ member.conference }}</p>
     	<p>{{ member.location}}</p>
   </div>
 {% endfor %}
 </ol>
 
 
-1. <b>Effects of Aging and Disc Degeneration on the human ankle and knees during walking</b><br>
+<!-- 1. <b>Effects of Aging and Disc Degeneration on the human ankle and knees during walking</b><br>
 	April, 2026 <br>
 	Presenter: Ms. Nora McGowan<br>
 	Celebration of Excellence in Research and Creative Activity, UWEC, Eau Claire, WI.
-
+ -->
