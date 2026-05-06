@@ -12,14 +12,15 @@ updated: 5/4/2026
 
 ## Poster
 <ol>
-{% assign intra.poster = site.data.presentations | where: "type", "Intramural Poster" %}
+{% assign intra.poster = site.data.presentations | where: "type", "Intramural_Poster" %}
 {% for member in intra.poster %}
   <div class="Presentations">
-    <li><h3>{{ member.title }}</h3></li>
+    <li><h3>{{ member.title }}</h3>
     	<p>{{ member.date }}</p>
     	<p><b>Presenter:</b> {{ member.presenter }}</p>
     	<p><b>Conference:</b> {{ member.conference }}</p>
     	<p>{{ member.location}}</p>
+    </li>
   </div>
 {% endfor %}
 </ol>
