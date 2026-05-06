@@ -14,22 +14,10 @@ Meet the researchers, engineers, and students driving innovation in assistive ro
 {% assign faculty = site.data.team | where: "role", "Faculty" %}
 {% for member in faculty %}
   <div class="team-member">
-  <table>
-      <tr>
-        <th>
-          <img src="{{ site.baseurl }}/images/{{ member.image }}" alt="{{ member.name }}" style="width: 300px">
-        </th>
-        <th>
-          <p><b>{{ member.name }}</b></p>
-          <p>{{ member.position}}</p>
-        </th>
-      </tr>
-  </div>
-  <!-- <div class="team-member">
     <img src="{{ site.baseurl }}/images/{{ member.image }}" alt="{{ member.name }}" style="width: 300px">
     <h3>{{ member.name }}</h3>
-    <p>{{ member.position}}</p>
-  </div> -->
+    <p>{{ member.position }}</p>
+  </div>
 {% endfor %}
 <br>
 
@@ -40,7 +28,7 @@ Meet the researchers, engineers, and students driving innovation in assistive ro
   <div class="team-member">
     <img src="{{ site.baseurl }}/images/{{ member.image }}" alt="{{ member.name }}" style="width: 300px">
     <h3>{{ member.name }}</h3>
-    <p>{{ member.position}}</p>
+    <p>{{ member.position }}</p>
     <br>
   </div>
 {% endfor %}
