@@ -4,7 +4,7 @@ permalink: /Education/
 author_profile: true
 ---
 
-* Workshop (Summer 2026)
+* Blugold Biomedical Exploration Camp (Summer 2026)<br>
 This workshop is designed to introduce assistive robotics to high school students
 	* Assistive Robotics Part I
 		* Notes
