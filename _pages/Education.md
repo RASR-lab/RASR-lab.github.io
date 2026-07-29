@@ -15,7 +15,7 @@ This workshop is designed to introduce assistive robotics to high school student
 		1.	[Simple_servo_control.py]({{site.baseurl}}/files/Code/Simple_servo_control.py)
 		1.	[Button_servo_control.py]({{site.baseurl}}/files/Code/Button_servo_control.py)
 
-	* Assistive Robotics Part I
+	* Assistive Robotics Part II
 		* Notes
 		1.	[Assistive_Robotics_P2.pptx]({{site.baseurl}}/files/Assistive_Robotics_P2.pptx)
 		* Micro Python Code:
