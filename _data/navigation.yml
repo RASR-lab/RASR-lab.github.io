@@ -15,11 +15,11 @@ main:
   #- title: "Photography"
   #  url: /Photography/    
     
-  - title: "Education"
-    url: /teaching/   
+  # - title: "Education"
+  #   url: /education/   
         
-  # - title: "My Travel"
-  #   url: /mytravel/
+  - title: "Talks"
+    url: /talks/
 
   - title: "Contact"
     url: /contact/  
