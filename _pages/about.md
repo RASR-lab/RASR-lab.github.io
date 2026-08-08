@@ -23,15 +23,18 @@ Feel free to explore our work and collaborations...
 <br>
 
 # News
-<ol>
+<ul>
 {% assign news = site.data.news %}
-{% for item in news %}
+{% for item in news reversed%}
   <div class="News-post">
     <li>
       <p><b>{{ item.headline }}</b> &nbsp;    {{ item.date }}<br>
-      {{ item.post }}</p>
+      {{ item.post }}<br>
+      {% if item.link_url and item.link_url != "" %}
+        <a href="{{ item.link_url }}">Find out more here</a>
+      {% endif %}</p>
     </li>
   </div>
 {% endfor %}
-</ol>
+</ul>
 
