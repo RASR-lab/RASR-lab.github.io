@@ -6,13 +6,10 @@
   @include full();
   @include clearfix;
   margin-top: 3em;
-  color: #000;
   -webkit-animation: intro 0.3s both;
           animation: intro 0.3s both;
   -webkit-animation-delay: 0.45s;
           animation-delay: 0.45s;
-  background-color: $uwec-gold;
-  border-top: $uwec-gold;
 
   footer {
     @include container;

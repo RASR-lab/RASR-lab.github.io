@@ -14,7 +14,8 @@
 
 .research-project__title {
   margin-top: 0;
-  color: $uwec-blue;
+  font-family: $serif;
+  color: $brand-royal;
 }
 
 .research-project__skills-label {
@@ -33,8 +34,9 @@
     padding: 0.2em 0.8em;
     font-size: $type-size-6;
     line-height: 1.6;
-    color: $uwec-blue;
-    background: mix(#fff, $uwec-blue, 90%);
+    color: $brand-royal;
+    background: $brand-gray;
+    border: 1px solid $brand-slate;
     border-radius: 1em;
   }
 }

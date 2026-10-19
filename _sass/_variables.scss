@@ -13,8 +13,10 @@ $paragraph-indent           : false; // true, false (default)
 $indent-var                 : 1.3em;
 
 /* system typefaces */
-$serif                      : Georgia, Times, serif;
-$sans-serif                 : -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
+/* UW-Eau Claire brand fonts (Brand Guide 2025): PT Serif headlines, Inter text.
+   Loaded from Google Fonts in _includes/head/custom.html. */
+$serif                      : "PT Serif", Georgia, Times, serif;
+$sans-serif                 : "Inter", -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
 $monospace                  : Monaco, Consolas, "Lucida Console", monospace;
 
 /* sans serif typefaces */
@@ -46,8 +48,17 @@ $type-size-8                : 0.625em;  // ~10px
 /*
    Colors
    ========================================================================== */
-$uwec-blue                  : #174094;
-$uwec-gold                  : #fdb414;
+/* UW-Eau Claire brand palette (Brand Guide 2025) */
+$brand-royal                : #242B99;  // primary
+$brand-gold                 : #EDAC1A;  // primary
+$brand-navy                 : #07233D;  // secondary
+$brand-old-gold             : #B28114;  // secondary
+$brand-earth                : #725E49;  // neutral support
+$brand-slate                : #B2C5D5;  // neutral support
+$brand-gray                 : #EEF3FA;  // neutral support
+
+$uwec-blue                  : $brand-royal;
+$uwec-gold                  : $brand-gold;
 
 $gray                       : #7a8288;
 $dark-gray                  : mix(#000, $gray, 40%);
@@ -59,10 +70,10 @@ $body-color                 : #fff;
 $background-color           : #fff;
 $code-background-color      : #fafafa;
 $code-background-color-dark : $light-gray;
-$text-color                 : #000;
+$text-color                 : $brand-navy;
 $border-color               : $uwec-gold;
 
-$primary-color              : #7a8288;
+$primary-color              : $brand-royal;
 $success-color              : #62c462;
 $warning-color              : #f89406;
 $danger-color               : #ee5f5b;
@@ -92,9 +103,9 @@ $xing-color                 : #006567;
 
 
 /* links */
-$link-color                 : $info-color;
-$link-color-hover           : mix(#000, $link-color, 25%);
-$link-color-visited         : mix(#fff, $link-color, 25%);
+$link-color                 : $brand-royal;
+$link-color-hover           : $brand-navy;
+$link-color-visited         : $brand-royal;
 $masthead-link-color        : #fff;
 $masthead-link-color-hover  : $uwec-gold;
 

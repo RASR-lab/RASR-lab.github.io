@@ -17,7 +17,7 @@ Eau Claire, WI, U.S.A.<br>
 Please contact Dr. Sandesh G. Bhat for further questions 
 
 <b>Email:</b> <a class="contact-link" href="mailto:bhatsg+labwebsite@uwec.edu">University Email ID</a><br>
-<b>LinkedIn:</b> [<font color="#52ADC8">Sandesh G. Bhat</font>](https://in.linkedin.com/in/mrsandeshbhat)
+<b>LinkedIn:</b> <a class="contact-link" href="https://in.linkedin.com/in/mrsandeshbhat">Sandesh G. Bhat</a>
 
 <h2 id="join-the-lab" class="archive__subtitle archive__subtitle--section">Join the Lab!</h2>
 
