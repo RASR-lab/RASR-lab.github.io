@@ -10,7 +10,7 @@ author_profile: true
 <b>Location:</b>
 
 Phillips Science Hall<br>
-University of Wisconsin - Eau Claire<br>
+University of Wisconsin-Eau Claire<br>
 Eau Claire, WI, U.S.A.<br>
 
 

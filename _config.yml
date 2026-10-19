@@ -15,7 +15,7 @@ locale                   : "en-US"
 title                    : "RASR Lab"
 title_separator          : "-"
 name                     : &name "RASR Lab"
-description              : &description "RASR Lab at UW–Eau Claire: undergraduate research in upper-extremity robotics for assistance with daily living and rehabilitation."
+description              : &description "RASR Lab at UW-Eau Claire: undergraduate research in upper-extremity robotics for assistance with daily living and rehabilitation."
 url                      : https://RASR-lab.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "RASR-lab/RASR-lab.github.io"
@@ -87,7 +87,7 @@ author:
   bio              : "Robotics for Assistive Systems and Rehabilitation Lab<br>
                       <br>
                       Physics & Astronomy Department,<br>
-                      University of Wisconsin - Eau Claire"
+                      University of Wisconsin-Eau Claire"
   location         : "Eau Claire, WI, USA"
   employer         : 
   googlescholar    : 

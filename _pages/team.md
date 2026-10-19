@@ -7,7 +7,7 @@ redirect_from:
   - /people
 ---
 
-Meet the researchers, engineers, and students driving innovation in assistive robotics and rehabilitation technology at the University of Wisconsin–Eau Claire.
+Meet the researchers, engineers, and students driving innovation in assistive robotics and rehabilitation technology at the University of Wisconsin-Eau Claire.
 
 ## Faculty
 
