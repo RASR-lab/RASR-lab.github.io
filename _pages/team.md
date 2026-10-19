@@ -36,8 +36,4 @@ Meet the researchers, engineers, and students driving innovation in assistive ro
 <br>
 <br>
 
-# Join the Lab!
-
-  Interested in biomechanics, robotics, or rehabilitation engineering? The RASR Lab welcomes motivated undergraduate and graduate students. Reach out to
-      <a href="https://www.uwec.edu/profiles/bhatsg" style="color:#174094;font-weight:bold;">Dr. Sandesh Bhat</a>
-      to learn about open positions and ongoing projects.
+**Interested in joining?** See [Join the Lab]({{ site.baseurl }}/contact/#join-the-lab) on the Contact page.

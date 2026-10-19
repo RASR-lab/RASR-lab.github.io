@@ -25,4 +25,4 @@ author_profile: true
 </div>
 {% endif %}
 
-Interested in working on one of these projects? See [Join the Lab]({{ site.baseurl }}/team/#join-the-lab).
+Interested in working on one of these projects? See [Join the Lab]({{ site.baseurl }}/contact/#join-the-lab).

@@ -1,0 +1,31 @@
+{% comment %}
+  "Join the Lab" form. Submissions are emailed by FormSubmit (formsubmit.co)
+  to the address in the action URL. The first submission triggers a one-time
+  confirmation email to that address; click its link to start receiving them.
+  Field names are what appear in the emailed table. The field named "email"
+  becomes the Reply-To address.
+{% endcomment %}
+{% assign this_year = site.time | date: "%Y" | plus: 0 %}
+{% assign last_year = this_year | plus: 10 %}
+<form class="join-form" action="https://formsubmit.co/bhatsg+labwebsite@uwec.edu" method="POST">
+  <input type="hidden" name="_subject" value="RASR Lab website: Join the Lab inquiry">
+  <input type="hidden" name="_template" value="table">
+  <input type="hidden" name="_next" value="{{ site.url }}{{ site.baseurl }}/contact/thanks/">
+  <input type="text" name="_honey" class="join-form__honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+  <label for="join-name">Name</label>
+  <input id="join-name" type="text" name="Name" autocomplete="name" required>
+  <label for="join-email">Email</label>
+  <input id="join-email" type="email" name="email" autocomplete="email" required>
+  <fieldset>
+    <legend>Are you a current or prospective UWEC student?</legend>
+    <label class="radio"><input type="radio" name="UWEC student" value="Current" required> Current UWEC student</label>
+    <label class="radio"><input type="radio" name="UWEC student" value="Prospective"> Prospective UWEC student</label>
+  </fieldset>
+  <label for="join-year">Expected graduation year</label>
+  <input id="join-year" type="number" name="Graduation year" min="{{ this_year }}" max="{{ last_year }}" step="1" inputmode="numeric" placeholder="e.g. {{ this_year | plus: 2 }}" required>
+  <label for="join-major">Major</label>
+  <input id="join-major" type="text" name="Major" placeholder="e.g. Biomedical Engineering, or Undecided" required>
+  <label for="join-comments">Further comments <small>(optional)</small></label>
+  <textarea id="join-comments" name="Comments" rows="6" placeholder="Which projects interest you, relevant experience, availability…"></textarea>
+  <button type="submit" class="btn join-form__submit">Send</button>
+</form>

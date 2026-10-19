@@ -1,0 +1,83 @@
+/* ==========================================================================
+   Contact page: visible links and the Join the Lab form
+   ========================================================================== */
+
+/* Archive-layout pages make links look like plain text; opt back in. */
+.archive a.contact-link {
+  color: $link-color;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.join-form {
+  max-width: 36em;
+  margin-top: 1.5em;
+
+  label {
+    margin-top: 0.75em;
+    font-weight: bold;
+
+    small {
+      font-weight: normal;
+      color: mix(#fff, $gray, 25%);
+    }
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  textarea {
+    padding: 0.5em 0.6em;
+  }
+
+  input[type="number"] {
+    max-width: 10em;
+  }
+
+  textarea {
+    min-height: 8em;
+    resize: vertical;
+  }
+
+  fieldset {
+    margin: 1em 0 0;
+  }
+
+  legend {
+    margin-bottom: 0.25em;
+    font-weight: bold;
+    border-bottom: 0;
+  }
+
+  .radio {
+    margin-top: 0.4em;
+    padding-left: 1.6em;
+    font-weight: normal;
+
+    input[type="radio"] {
+      margin: 0.3em 0 0 -1.6em;
+    }
+  }
+}
+
+.join-form__submit {
+  margin-top: 1.25em;
+  padding: 0.6em 2em;
+  font-size: $type-size-5;
+  background-color: $uwec-blue;
+
+  &:hover {
+    background-color: mix(#000, $uwec-blue, 25%);
+  }
+}
+
+/* Honeypot: hidden from people, filled in by spam bots */
+.join-form__honey {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
