@@ -32,6 +32,13 @@
   }
 }
 
+/* Section subheading styled like a content h2 (e.g. Research page headings) */
+.archive__subtitle--section {
+  margin: 2em 0 0.5em;
+  font-size: $type-size-4;
+  color: $text-color;
+}
+
 .archive__item-title {
   margin-bottom: 0.25em;
   font-family: $sans-serif-narrow;

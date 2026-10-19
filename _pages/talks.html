@@ -14,7 +14,7 @@ author_profile: true
 {% assign sections = talks | group_by: "section" %}
 {% for section in sections %}
   {% if section.name != "" %}
-  <h2 id="{{ section.name | slugify }}" class="archive__subtitle">{{ section.name }}</h2>
+  <h2 id="{{ section.name | slugify }}" class="archive__subtitle archive__subtitle--section">{{ section.name }}</h2>
   {% endif %}
   {% for post in section.items %}
     {% include archive-single-talk.html %}
