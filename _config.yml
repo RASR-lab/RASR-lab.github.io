@@ -145,6 +145,8 @@ exclude:
   - Rakefile
   - README
   - tmp
+  - markdown_generator
+  - git_push.sh
 #  - assets
 keep_files:
   - .git
