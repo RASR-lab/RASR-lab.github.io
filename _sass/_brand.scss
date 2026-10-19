@@ -183,3 +183,12 @@
 .page__footer-copyright {
   opacity: 0.85;
 }
+
+/*
+   Publications list (grouped by year, numbered newest to oldest)
+   ========================================================================== */
+
+.publication-list li {
+  margin-bottom: 1.25em;
+  line-height: 1.5;
+}

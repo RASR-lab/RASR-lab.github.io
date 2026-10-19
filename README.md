@@ -19,6 +19,7 @@ The site is built automatically by GitHub Pages. Any change saved to the `master
 | Team members | `_data/team.yml` (photos go in `images/`) |
 | News on the home page | `_data/news.yml` |
 | Research projects | `_data/research.yml` |
+| Publications | `_data/publications.yml` |
 | Presentations (posters) | `_data/presentations.yml` |
 | Talks and workshops | one file per talk in `_talks/` |
 | Home page text | `_pages/about.md` |
@@ -66,6 +67,19 @@ Edit `_data/research.yml`. Set `status: past` to move a project into a **Past Pr
   skills:
     - "Skill one"
     - "Skill two"
+```
+
+### Add a publication
+
+Add a block to `_data/publications.yml` (any order). The page groups papers by the year in `date`, newest first, numbers them, and links the title to the DOI. Wrap lab members in `<i><b>…</b></i>`, and use single quotes around `authors` when it contains HTML. Remove `status` (or replace it with volume/pages) once the paper is in a print issue.
+
+```yaml
+- title: "Paper title"
+  authors: 'First Author, <i><b>Sandesh G Bhat</b></i>, Last Author'
+  journal: "Journal name"
+  status: "Publish Ahead of Print, March 1, 2027"   # optional; or volume/issue/pages
+  date: 2027-03-01             # publication (or online) date
+  doi: "10.xxxx/xxxxx"         # optional; without it the title isn't linked
 ```
 
 ### Add a presentation
