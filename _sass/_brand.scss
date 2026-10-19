@@ -130,3 +130,56 @@
     }
   }
 }
+
+/*
+   Phones and tablets: compact sidebar (small badge + lab name) so page
+   content starts near the top of the screen. Desktop layout unchanged.
+   ========================================================================== */
+
+@media (max-width: #{$large - 1px}) {
+  .sidebar {
+    margin-bottom: 0.75em;
+  }
+
+  .author__avatar {
+    width: 56px;
+    vertical-align: middle;
+
+    img {
+      width: 56px;
+      height: 56px;
+    }
+  }
+
+  .author__content {
+    vertical-align: middle;
+  }
+
+  .author__bio {
+    display: none;
+  }
+}
+
+/*
+   Footer contact line
+   ========================================================================== */
+
+.page__footer-info {
+  margin: 0 0 1em;
+  font-size: $type-size-6;
+  line-height: 1.6;
+
+  p {
+    margin: 0;
+  }
+}
+
+.page__footer-lab {
+  font-family: $serif;
+  font-size: $type-size-4;
+  font-weight: 700;
+}
+
+.page__footer-copyright {
+  opacity: 0.85;
+}

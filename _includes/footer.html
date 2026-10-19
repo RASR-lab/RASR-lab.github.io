@@ -1,4 +1,9 @@
 {% include base_path %}
 
+<div class="page__footer-info">
+  <p class="page__footer-lab">{{ site.name }}</p>
+  <p>Physics &amp; Astronomy Department &middot; Phillips Science Hall &middot; University of Wisconsin-Eau Claire &middot; Eau Claire, WI</p>
+  <p><a href="mailto:{{ site.author.email }}">Email the lab</a> &middot; <a href="{{ base_path }}/contact/#join-the-lab">Join the Lab</a></p>
+</div>
 
-<div class="page__footer-copyright">&copy; {{ site.time | date: '%Y' }} {{ site.name | default: site.title }}. {{ site.data.ui-text[site.locale].powered_by | default: "Powered by" }} <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/academicpages/academicpages.github.io">AcademicPages</a>.</div>
+<div class="page__footer-copyright">&copy; {{ site.time | date: '%Y' }} {{ site.name | default: site.title }}, UW-Eau Claire</div>
