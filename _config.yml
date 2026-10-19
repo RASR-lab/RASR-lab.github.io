@@ -84,9 +84,7 @@ analytics:
 author:
   name             : "RASR Lab"
   avatar           : "RASR_Lab_logo.png"
-  bio              : "Robotics for Assistive Systems and Rehabilitation Lab<br>
-                      <br>
-                      Physics & Astronomy Department,<br>
+  bio              : "Physics & Astronomy Department,<br>
                       University of Wisconsin-Eau Claire"
   location         : "Eau Claire, WI, USA"
   employer         : 
