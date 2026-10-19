@@ -2,6 +2,7 @@
 title: "Blugold Biomedical Exploration Camp"
 collection: talks
 type: "Workshop"
+section: "Teaching/Outreach"
 permalink: /talks/2026-07-27-bme-summer
 link: https://github.com/RASR-lab/Assistive-Robotics-Camp
 redirect_to: https://github.com/RASR-lab/Assistive-Robotics-Camp

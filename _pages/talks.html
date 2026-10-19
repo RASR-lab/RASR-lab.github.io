@@ -5,7 +5,18 @@ permalink: /talks/
 author_profile: true
 ---
 
-<br>
-{% for post in site.talks reversed %}
-  {% include archive-single-talk.html %}
+{% comment %}
+  Talks are grouped by the `section` field in each file in _talks/
+  (e.g. section: "Teaching/Outreach"). Talks without one are listed
+  without a subheading. Newest first.
+{% endcomment %}
+{% assign talks = site.talks | reverse %}
+{% assign sections = talks | group_by: "section" %}
+{% for section in sections %}
+  {% if section.name != "" %}
+  <h2 id="{{ section.name | slugify }}" class="archive__subtitle">{{ section.name }}</h2>
+  {% endif %}
+  {% for post in section.items %}
+    {% include archive-single-talk.html %}
+  {% endfor %}
 {% endfor %}
