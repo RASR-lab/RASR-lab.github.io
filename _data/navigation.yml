@@ -22,7 +22,4 @@ main:
     url: /talks/
 
   - title: "Contact"
-    url: /contact/  
-    
-  # - title: "Guide"
-    # url: /markdown/
+    url: /contact/
