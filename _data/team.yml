@@ -16,4 +16,24 @@
 - name: Bryce Borowicz
   role: Research Assistant
   image: profile.png
-  position: Exercise Science Major
+  position: Exercise Science Major/ Pre-med
+
+- name: Grace Blegen
+  role: Research Assistant
+  image: profile.png
+  position: Math Major
+
+- name: Ben Anderson
+  role: Research Assistant
+  image: profile.png
+  position: Physics Major
+
+- name: Maddie Robinson
+  role: Research Assistant
+  image: profile.png
+  position: Physics Major
+
+- name: Jackson Schulz
+  role: Research Assistant
+  image: profile.png
+  position: Exercise Science Major/ Pre-med
