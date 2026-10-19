@@ -6,8 +6,6 @@ author_profile: true
 ---
 
 <br>
-updated: 5/4/2026
-
 # Intramural
 ## Poster
 <ol>
