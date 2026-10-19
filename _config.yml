@@ -15,7 +15,7 @@ locale                   : "en-US"
 title                    : "RASR Lab"
 title_separator          : "-"
 name                     : &name "RASR Lab"
-description              : &description "Assistant Professor, UWEC"
+description              : &description "RASR Lab at UW–Eau Claire: undergraduate research in upper-extremity robotics for assistance with daily living and rehabilitation."
 url                      : https://RASR-lab.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "RASR-lab/RASR-lab.github.io"
@@ -64,7 +64,7 @@ facebook:
   username               : 
   app_id                 :
   publisher              :
-og_image                 :  # Open Graph/Twitter default site image
+og_image                 : "og-image.png" # Open Graph/Twitter default site image
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
