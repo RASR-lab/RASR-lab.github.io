@@ -1,17 +1,18 @@
 {% comment %}
-  "Join the Lab" form. Submissions are emailed by FormSubmit (formsubmit.co)
-  to the address in the action URL. The first submission triggers a one-time
-  confirmation email to that address; click its link to start receiving them.
-  Field names are what appear in the emailed table. The field named "email"
-  becomes the Reply-To address.
+  "Join the Lab" form. Submissions are emailed by Web3Forms (web3forms.com)
+  to bhatsg+labwebsite@uwec.edu, the address the access key was created for.
+  The access key is meant to be public. Free plan: 250 submissions/month.
+  Field names are what appear in the emailed message. The field named "email"
+  becomes the Reply-To address. "botcheck" is a hidden spam trap.
 {% endcomment %}
 {% assign this_year = site.time | date: "%Y" | plus: 0 %}
 {% assign last_year = this_year | plus: 10 %}
-<form class="join-form" action="https://formsubmit.co/bhatsg+labwebsite@uwec.edu" method="POST">
-  <input type="hidden" name="_subject" value="RASR Lab website: Join the Lab inquiry">
-  <input type="hidden" name="_template" value="table">
-  <input type="hidden" name="_next" value="{{ site.url }}{{ site.baseurl }}/contact/thanks/">
-  <input type="text" name="_honey" class="join-form__honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+<form class="join-form" action="https://api.web3forms.com/submit" method="POST">
+  <input type="hidden" name="access_key" value="656011b2-90dd-42af-8e26-1f6a6c1dbf69">
+  <input type="hidden" name="subject" value="RASR Lab website: Join the Lab inquiry">
+  <input type="hidden" name="from_name" value="RASR Lab website">
+  <input type="hidden" name="redirect" value="{{ site.url }}{{ site.baseurl }}/contact/thanks/">
+  <input type="checkbox" name="botcheck" class="join-form__honey" style="display: none;" tabindex="-1" autocomplete="off" aria-hidden="true">
   <label for="join-name">Name</label>
   <input id="join-name" type="text" name="Name" autocomplete="name" required>
   <label for="join-email">Email</label>
