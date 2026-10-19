@@ -1,0 +1,40 @@
+/* ==========================================================================
+   Research page project cards
+   ========================================================================== */
+
+.research-project {
+  margin: 0 0 2em;
+  padding: 0.1em 0 0.1em 1.25em;
+  border-left: 4px solid $uwec-gold;
+
+  p {
+    margin: 0 0 0.5em;
+  }
+}
+
+.research-project__title {
+  margin-top: 0;
+  color: $uwec-blue;
+}
+
+.research-project__skills-label {
+  margin-bottom: 0.4em;
+}
+
+.research-project__skills {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    margin: 0 0.5em 0.5em 0;
+    padding: 0.2em 0.8em;
+    font-size: $type-size-6;
+    line-height: 1.6;
+    color: $uwec-blue;
+    background: mix(#fff, $uwec-blue, 90%);
+    border-radius: 1em;
+  }
+}

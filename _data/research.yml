@@ -1,0 +1,33 @@
+# Research projects shown on /research/.
+# status: "ongoing" or "past". Past projects get their own section once any exist.
+
+- title: "Biomechanical Modeling of the Fingers & Hands"
+  status: ongoing
+  what: "Build computer models of finger and hand movement using experimental data."
+  why: "Simulate hand forces and movements to better understand and prevent injuries."
+  skills:
+    - "3D kinematics"
+    - "3D kinetics"
+    - "Python programming"
+    - "Modeling & simulation"
+
+- title: "Biomechanical Analysis of Climbers’ Hands"
+  status: ongoing
+  what: "Study how hand and finger muscles generate and control force during gripping."
+  why: "Understand hand loading during demanding tasks such as lifting heavy or awkward objects."
+  skills:
+    - "Human anatomy & biomechanics"
+    - "Motion capture"
+    - "Electromyography (EMG)"
+    - "Sensor integration & data collection"
+
+- title: "Powered Myoelectric Hand Orthosis"
+  status: ongoing
+  what: "Design and build a powered finger exoskeleton controlled by muscle signals."
+  why: "Develop assistive technology to improve hand function and independence."
+  skills:
+    - "3D modeling & printing"
+    - "Electronics & sensors"
+    - "Motor control"
+    - "MicroPython programming"
+    - "Prototyping & testing"

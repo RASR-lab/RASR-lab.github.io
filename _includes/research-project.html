@@ -1,0 +1,13 @@
+<div class="research-project">
+  <h3 class="research-project__title">{{ include.project.title | escape }}</h3>
+  <p><strong>What:</strong> {{ include.project.what | escape }}</p>
+  <p><strong>Why:</strong> {{ include.project.why | escape }}</p>
+  {%- if include.project.skills %}
+  <p class="research-project__skills-label"><strong>Skills:</strong></p>
+  <ul class="research-project__skills">
+    {%- for skill in include.project.skills %}
+    <li>{{ skill | escape }}</li>
+    {%- endfor %}
+  </ul>
+  {%- endif %}
+</div>
